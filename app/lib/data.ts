@@ -370,7 +370,7 @@ export const mainNavigation = {
       href: "/products",
       dropdown: products.map((p) => ({
         label: p.title,
-        href: `/products#${p.slug}`,
+        href: `/products/${p.slug}`,
       })),
     },
     { label: "Integration", href: "/ans-monitoring-integration" },
@@ -380,7 +380,7 @@ export const mainNavigation = {
   productsDropdown: {
     label: "Products",
     href: "/products",
-    items: products.map((p) => ({ label: p.title, href: `/products#${p.slug}` })),
+    items: products.map((p) => ({ label: p.title, href: `/products/${p.slug}` })),
   } as NavDropdown & { href: string },
   specialtiesDropdown: {
     label: "Specialties",
