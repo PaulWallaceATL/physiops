@@ -43,7 +43,7 @@ export default function MonitoringSection() {
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
             {monitoring.subtitle}
           </p>
-          <div className="flex flex-col items-center gap-2 overflow-visible py-8 sm:py-12">
+          <div className="flex flex-col items-center gap-8 overflow-visible pt-10 pb-6 sm:gap-2 sm:py-12">
             <p className="flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400">
               <Hand className="h-4 w-4 shrink-0" aria-hidden />
               <span>Drag</span>
