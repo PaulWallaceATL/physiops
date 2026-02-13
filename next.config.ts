@@ -9,11 +9,15 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
   },
   // Reduce client bundle by not inlining small assets
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
+  // Slight security/tidiness; avoid revealing Next.js
+  poweredByHeader: false,
+  compress: true,
 };
 
 export default nextConfig;

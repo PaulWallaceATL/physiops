@@ -1,9 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, Play, Heart, Stethoscope, Activity } from "lucide-react";
 import { motion } from "motion/react";
 import StaggeredText from "@/app/components/StaggeredText";
+
+const GradientBlob = dynamic(
+  () => import("@/app/components/gradient-blob").then((m) => m.default),
+  { ssr: false, loading: () => <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-800 animate-pulse rounded-4xl" /> }
+);
 
 export default function HomeHero() {
   return (
@@ -112,52 +118,39 @@ export default function HomeHero() {
             </motion.div>
           </div>
 
-          {/* Right Column - Visual Content */}
+          {/* Right Column - Gradient blob (brand colors) + CTA overlay */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative w-full h-auto"
           >
-            <div className="relative w-full h-full min-h-[250px] sm:min-h-[500px] rounded-4xl bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors overflow-hidden flex items-center justify-center p-8">
-              {/* Medical icon with gradient red */}
-              <svg
-                className="w-1/2 max-w-[280px] h-auto sm:max-w-[320px] text-red-600"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="url(#heroIconGradient)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <defs>
-                  <linearGradient
-                    id="heroIconGradient"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop offset="0%" stopColor="#b91c1c" />
-                    <stop offset="50%" stopColor="#dc2626" />
-                    <stop offset="100%" stopColor="#7f1d1d" />
-                  </linearGradient>
-                </defs>
-                {/* Activity / heartbeat – autonomic monitoring */}
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
-              <div className="absolute bottom-0 right-0 flex flex-col items-end">
+            <div className="relative w-full h-[250px] sm:h-[500px] rounded-4xl overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+              <GradientBlob
+                width="100%"
+                height="100%"
+                className="!absolute inset-0"
+                primaryColor="#dc2626"
+                secondaryColor="#b91c1c"
+                accentColor="#f87171"
+                baseColor="#0a0a0a"
+                breathe={true}
+                parallax={true}
+                metallic={0.35}
+                morphIntensity={0.6}
+                quality="medium"
+                pauseWhenOffscreen={true}
+              />
+              {/* Corner CTA overlay - pointer-events-auto so link is clickable */}
+              <div className="absolute bottom-0 right-0 flex flex-col items-end pointer-events-auto z-10">
                 <svg
                   width="40"
                   height="40"
                   viewBox="0 0 200 200"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="fill-white dark:fill-neutral-950"
                 >
-                  <path
-                    d="M0 200C155.996 199.961 200.029 156.308 200 0V200H0Z"
-                    className="fill-white dark:fill-neutral-950"
-                  />
+                  <path d="M0 200C155.996 199.961 200.029 156.308 200 0V200H0Z" />
                 </svg>
                 <div className="relative">
                   <div className="w-24 h-24 bg-white dark:bg-neutral-950 rounded-tl-4xl pl-4 pt-4">
@@ -173,12 +166,9 @@ export default function HomeHero() {
                     height="40"
                     viewBox="0 0 200 200"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="absolute bottom-0 -left-[40px]"
+                    className="absolute bottom-0 -left-[40px] fill-white dark:fill-neutral-950"
                   >
-                    <path
-                      d="M0 200C155.996 199.961 200.029 156.308 200 0V200H0Z"
-                      className="fill-white dark:fill-neutral-950"
-                    />
+                    <path d="M0 200C155.996 199.961 200.029 156.308 200 0V200H0Z" />
                   </svg>
                 </div>
               </div>

@@ -28,6 +28,9 @@ export default function PreloaderWrapper({
       zIndex={100}
       textClassName="!text-red-500"
       showProgressBar={true}
+      respectReducedMotion={true}
+      reducedMotionFallback="fade"
+      ariaLabel="Loading Physio PS"
     >
       {children}
     </Preloader>
