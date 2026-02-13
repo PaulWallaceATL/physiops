@@ -18,11 +18,11 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
         {/* Content box: RisingLines only in this container; content on top */}
         <div className="relative flex-1 min-h-[calc(100vh-8vmax)] rounded-[3vmax] overflow-hidden bg-black">
           <RisingLines
-            color="#7c3aed"
-            horizonColor="#7c3aed"
-            haloColor="#a78bfa"
-            riseSpeed={0.08}
-            flowSpeed={0.2}
+            color="#dc2626"
+            horizonColor="#dc2626"
+            haloColor="#f87171"
+            riseSpeed={0.02}
+            flowSpeed={0.12}
             riseIntensity={0.7}
             flowIntensity={0.5}
             horizonIntensity={0.8}
@@ -52,7 +52,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
                   delay={50}
                   direction="top"
                 />
-                <span className="text-white/70 font-normal text-[0.5em] sm:text-[0.45em] block mt-2">
+                <span className="text-white/90 font-normal text-base sm:text-lg block mt-3 max-w-xl">
                   {subtitle}
                 </span>
               </div>

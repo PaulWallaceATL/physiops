@@ -13,7 +13,7 @@ export default function MonitoringSection() {
     () =>
       monitoring.conditionsList.map((label) => ({
         content: (
-          <span className="whitespace-nowrap text-sm font-medium text-neutral-700 dark:text-neutral-300">
+          <span className="whitespace-nowrap text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300">
             {label}
           </span>
         ),
@@ -42,18 +42,20 @@ export default function MonitoringSection() {
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
             {monitoring.subtitle}
           </p>
-          <div className="h-[520px] w-full sm:h-[580px] md:h-[640px]">
-            <CenterFlow
-              nodeItems={nodeItems}
-              centerContent="PS"
-              centerSize={80}
-              nodeSize={44}
-              variableNodeWidth
-              nodeDistance={0.72}
-              pulseDuration={4}
-              pulseInterval={8}
-              className="rounded-2xl"
-            />
+          <div className="h-[380px] w-full min-[480px]:h-[440px] sm:h-[520px] md:h-[600px] lg:h-[640px]">
+            <div className="h-full w-full scale-[0.7] origin-center min-[480px]:scale-90 sm:scale-100">
+              <CenterFlow
+                nodeItems={nodeItems}
+                centerContent="PS"
+                centerSize={80}
+                nodeSize={44}
+                variableNodeWidth
+                nodeDistance={0.86}
+                pulseDuration={4}
+                pulseInterval={8}
+                className="rounded-2xl h-full min-h-[380px]"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
