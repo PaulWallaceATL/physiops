@@ -600,6 +600,10 @@ export const homepageContent = {
     cta: "Share Your Success Story",
   },
   footer: {
+    headline: "Autonomic function monitoring. Better outcomes for patients.",
+    newsletterHeadline: "Stay updated on Physio PS news and product updates.",
+    newsletterDisclaimer:
+      "*By completing this form you are signing up to receive our emails and can unsubscribe at any time.",
     navigation: {
       column1: [
         { label: "Home", href: "/" },
