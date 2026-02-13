@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import HeroSection from "@/app/components/HeroSection";
+import PageHero from "@/app/components/PageHero";
 import SpecialtyConditionsSection from "@/app/components/sections/SpecialtyConditionsSection";
 import { specialties } from "@/app/lib/data";
 
@@ -27,7 +27,7 @@ export default async function SpecialtyPage({
 
   return (
     <div>
-      <HeroSection title={specialty.title} subtitle={subtitle} />
+      <PageHero title={specialty.title} subtitle={subtitle} />
       <SpecialtyConditionsSection
         conditions={specialty.conditions}
         specialtyTitle={specialty.title}

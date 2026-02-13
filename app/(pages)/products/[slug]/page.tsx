@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import HeroSection from "@/app/components/HeroSection";
+import PageHero from "@/app/components/PageHero";
 import ProductFeaturesSection from "@/app/components/sections/ProductFeaturesSection";
 import ProductBenefitsSection from "@/app/components/sections/ProductBenefitsSection";
 import { products } from "@/app/lib/data";
@@ -28,7 +28,7 @@ export default async function ProductPage({
 
   return (
     <div>
-      <HeroSection title={product.title} subtitle={subtitle} />
+      <PageHero title={product.title} subtitle={subtitle} />
       <ProductFeaturesSection product={product} />
       <ProductBenefitsSection product={product} />
     </div>

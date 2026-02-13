@@ -1,4 +1,4 @@
-import HeroSection from "@/app/components/HeroSection";
+import PageHero from "@/app/components/PageHero";
 import IntegrationPageSections from "@/app/components/sections/IntegrationPageSections";
 import { homepageContent } from "@/app/lib/data";
 
@@ -7,7 +7,7 @@ export default function IntegrationPage() {
 
   return (
     <div>
-      <HeroSection
+      <PageHero
         title="ANS Monitoring Integration"
         subtitle="Integrate Physio PS autonomic function testing into your practice or organization."
       />

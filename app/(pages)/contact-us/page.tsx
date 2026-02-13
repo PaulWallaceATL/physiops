@@ -1,4 +1,4 @@
-import HeroSection from "@/app/components/HeroSection";
+import PageHero from "@/app/components/PageHero";
 import ContactPageSection from "@/app/components/sections/ContactPageSection";
 import { homepageContent } from "@/app/lib/data";
 
@@ -7,7 +7,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <HeroSection title="Contact Us" subtitle={tryIt.description} />
+      <PageHero title="Contact Us" subtitle={tryIt.description} />
       <ContactPageSection />
     </div>
   );
