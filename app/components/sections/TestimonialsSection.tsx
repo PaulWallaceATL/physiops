@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { homepageContent } from "@/app/lib/data";
 
 const PLACEHOLDER_AVATARS = [
-  "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=75&w=96&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=75&w=96&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=75&w=96&auto=format&fit=crop",
 ];
 
 export default function TestimonialsSection() {
@@ -71,9 +72,12 @@ export default function TestimonialsSection() {
             </blockquote>
 
             <div className="flex items-center gap-3 lg:justify-center lg:gap-4">
-              <img
+              <Image
                 src={mainTestimonial.avatar}
                 alt={mainTestimonial.name}
+                width={48}
+                height={48}
+                sizes="(max-width: 1024px) 40px, 48px"
                 className="h-10 w-10 rounded-full border-2 border-white/30 object-cover lg:h-12 lg:w-12"
               />
               <div>
@@ -102,9 +106,12 @@ export default function TestimonialsSection() {
               </blockquote>
 
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src={testimonial.avatar}
                   alt={testimonial.author}
+                  width={40}
+                  height={40}
+                  sizes="40px"
                   className="h-10 w-10 rounded-full border-2 border-white/30 object-cover"
                 />
                 <div>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Preloader from "./Preloader";
 
-const PRELOADER_DURATION_MS = 2500;
+const PRELOADER_DURATION_MS = 3200;
 
 export default function PreloaderWrapper({
   children,
@@ -27,6 +27,7 @@ export default function PreloaderWrapper({
       loadingTextLine2="Complete Autonomic Function Testing"
       zIndex={100}
       textClassName="!text-red-500"
+      showProgressBar={true}
     >
       {children}
     </Preloader>

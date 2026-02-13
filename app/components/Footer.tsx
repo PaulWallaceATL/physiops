@@ -1,11 +1,23 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
 import StaggeredText from "@/app/components/StaggeredText";
-import RisingLines from "@/app/components/RisingLines";
+
+const RisingLines = dynamic(() => import("@/app/components/RisingLines"), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="absolute inset-0 bg-black"
+      style={{
+        background: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(127,29,29,0.15) 100%)",
+      }}
+    />
+  ),
+});
 
 export default function Footer() {
   const { footer } = homepageContent;

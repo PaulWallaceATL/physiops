@@ -351,6 +351,19 @@ const Preloader: React.FC<PreloaderProps> = ({
             )}
           </motion.div>
         ))}
+        {showProgressBar && (
+          <div
+            className="absolute left-0 right-0 bottom-0 h-1 bg-white/20"
+            style={{ zIndex: zIndex + 2 }}
+          >
+            <motion.div
+              className="h-full bg-red-500"
+              initial={{ width: "0%" }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.05, ease: "linear" }}
+            />
+          </div>
+        )}
         {renderLoadingText()}
       </div>
     );

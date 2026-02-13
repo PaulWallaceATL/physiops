@@ -7,9 +7,9 @@ import { Stethoscope, Heart } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
 
 const PROVIDER_IMAGE =
-  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=774&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=75&w=600&auto=format&fit=crop";
 const PATIENT_IMAGE =
-  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=774&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=75&w=600&auto=format&fit=crop";
 
 export default function ProviderPatientSection() {
   const { providerFocus, patientFocus, learnMoreCta } = homepageContent;
@@ -134,6 +134,8 @@ export default function ProviderPatientSection() {
                   key={activeIndex}
                   src={features[activeIndex].image}
                   alt=""
+                  decoding="async"
+                  fetchPriority="low"
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}

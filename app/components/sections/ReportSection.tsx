@@ -7,12 +7,12 @@ import { motion } from "motion/react";
 import { homepageContent } from "@/app/lib/data";
 
 const trailImages = [
-  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1579154204850-9b4594c9a3b0?w=400&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=200&h=300&fit=crop&q=75",
+  "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&h=300&fit=crop&q=75",
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=200&h=300&fit=crop&q=75",
+  "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=200&h=300&fit=crop&q=75",
+  "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=200&h=300&fit=crop&q=75",
+  "https://images.unsplash.com/photo-1579154204850-9b4594c9a3b0?w=200&h=300&fit=crop&q=75",
 ];
 
 export default function ReportSection() {
