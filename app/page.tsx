@@ -1,10 +1,9 @@
 import Link from "next/link";
-import HeroSection from "@/app/components/HeroSection";
+import HomeHero from "@/app/components/HomeHero";
 import { homepageContent } from "@/app/lib/data";
 
 export default function Home() {
   const {
-    hero,
     intro,
     monitoring,
     valueProposition,
@@ -24,10 +23,7 @@ export default function Home() {
 
   return (
     <div>
-      <HeroSection
-        title={hero.headline}
-        subtitle={hero.subheadline}
-      />
+      <HomeHero />
 
       <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
         <section className="mb-12">
