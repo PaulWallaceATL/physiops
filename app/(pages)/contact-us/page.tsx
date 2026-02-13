@@ -1,5 +1,5 @@
 import PageHero from "@/app/components/PageHero";
-import ContactPageSection from "@/app/components/sections/ContactPageSection";
+import ContactTryItSection from "@/app/components/sections/ContactTryItSection";
 import { homepageContent } from "@/app/lib/data";
 
 export default function ContactPage() {
@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <div>
       <PageHero title="Contact Us" subtitle={tryIt.description} />
-      <ContactPageSection />
+      <ContactTryItSection />
     </div>
   );
 }
