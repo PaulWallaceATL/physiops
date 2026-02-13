@@ -17,9 +17,9 @@ export default function HomeHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-center gap-2 sm:gap-3 rounded-full border-neutral-300 dark:border-neutral-800 border p-1 w-fit hover:border-neutral-600 dark:hover:border-neutral-500 transition-colors cursor-pointer"
+              className="flex items-center gap-2 sm:gap-3 rounded-full border border-red-200 dark:border-red-900/50 bg-red-50/50 dark:bg-red-950/30 p-1 w-fit hover:border-red-400 dark:hover:border-red-700 transition-colors cursor-pointer"
             >
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs sm:text-sm font-medium">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-red-600 text-white text-xs sm:text-sm font-medium">
                 New
               </span>
               <span className="text-sm sm:text-base text-neutral-900 dark:text-neutral-100 mr-2">
@@ -58,9 +58,9 @@ export default function HomeHero() {
             >
               <Link href="/contact-us">
                 <motion.span
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer inline-flex px-6 py-2.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium text-sm sm:text-base hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors duration-200 w-full sm:w-auto"
+                  className="cursor-pointer inline-flex px-6 py-2.5 rounded-full bg-red-600 text-white font-medium text-sm sm:text-base hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 transition-colors duration-200 w-full sm:w-auto shadow-lg shadow-red-900/20"
                 >
                   Get in Touch
                 </motion.span>
@@ -69,15 +69,15 @@ export default function HomeHero() {
                 <motion.span
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer inline-flex pl-5 pr-3 py-2.5 rounded-full border border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium text-sm sm:text-base hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors duration-200 items-center justify-center gap-2 w-full sm:w-auto group"
+                  className="cursor-pointer inline-flex pl-5 pr-3 py-2.5 rounded-full border-2 border-red-600 dark:border-red-500 text-red-600 dark:text-red-400 font-medium text-sm sm:text-base hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors duration-200 items-center justify-center gap-2 w-full sm:w-auto group"
                 >
                   Request Demo
                   <motion.span
-                    className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-black dark:bg-white"
+                    className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-600 dark:bg-red-500"
                     whileHover={{ rotate: 90 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Play className="w-3 h-3 fill-white dark:fill-black" />
+                    <Play className="w-3 h-3 fill-white" />
                   </motion.span>
                 </motion.span>
               </Link>
@@ -91,13 +91,13 @@ export default function HomeHero() {
               className="flex items-center gap-3 sm:gap-4 pt-2 sm:pt-4 select-none"
             >
               <div className="flex -space-x-2">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black dark:bg-white border-4 border-white dark:border-neutral-950 flex items-center justify-center text-white dark:text-black">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 border-4 border-white dark:border-neutral-950 flex items-center justify-center text-white shadow-md">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black dark:bg-white border-4 border-white dark:border-neutral-950 flex items-center justify-center text-white dark:text-black">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 border-4 border-white dark:border-neutral-950 flex items-center justify-center text-white shadow-md">
                   <Stethoscope className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black dark:bg-white border-4 border-white dark:border-neutral-950 flex items-center justify-center text-white dark:text-black">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-600 border-4 border-white dark:border-neutral-950 flex items-center justify-center text-white shadow-md">
                   <Activity className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
               </div>
@@ -163,9 +163,9 @@ export default function HomeHero() {
                   <div className="w-24 h-24 bg-white dark:bg-neutral-950 rounded-tl-4xl pl-4 pt-4">
                     <Link
                       href="/contact-us"
-                      className="w-full h-full cursor-pointer border-none flex items-center justify-center bg-black dark:bg-white border rounded-[1.2em] hover:opacity-90 transition-opacity"
+                      className="w-full h-full cursor-pointer border-none flex items-center justify-center bg-red-600 hover:bg-red-700 rounded-[1.2em] transition-colors"
                     >
-                      <ArrowRight className="w-6 h-6 dark:text-neutral-950 text-white -rotate-45" />
+                      <ArrowRight className="w-6 h-6 text-white -rotate-45" />
                     </Link>
                   </div>
                   <svg

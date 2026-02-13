@@ -47,7 +47,7 @@ export default function RootLayout({
         <CustomCursor circleColor="#dc2626" dotColor="#dc2626" />
         <PreloaderWrapper>
           <Navbar />
-          {children}
+          <div className="pt-[73px]">{children}</div>
           <Footer />
         </PreloaderWrapper>
       </body>

@@ -128,7 +128,7 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <Button asChild variant="outline" size="lg" className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white">
+          <Button asChild variant="outline" size="lg" className="border-red-400/80 bg-red-600/20 text-white hover:bg-red-600/40 hover:border-red-300 hover:text-white">
             <Link href="/contact-us">{testimonials.cta}</Link>
           </Button>
         </motion.div>

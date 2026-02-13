@@ -56,7 +56,7 @@ export default function WorkWithUsSection() {
             >
               <Link
                 href="/contact-us"
-                className="inline-block px-8 py-4 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-semibold text-base sm:text-lg hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors duration-200 w-fit"
+                className="inline-block px-8 py-4 rounded-2xl bg-red-600 text-white font-semibold text-base sm:text-lg hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 transition-colors duration-200 w-fit shadow-lg shadow-red-900/20"
               >
                 Get in Touch
               </Link>

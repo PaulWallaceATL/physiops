@@ -84,7 +84,7 @@ export default function Footer() {
                   />
                   <button
                     type="button"
-                    className="flex items-center justify-center border border-white/30 bg-white/10 px-4 transition-colors hover:bg-white/20 sm:px-6"
+                    className="flex items-center justify-center border border-red-500/80 bg-red-600 px-4 transition-colors hover:bg-red-700 sm:px-6"
                     aria-label="Subscribe"
                   >
                     <ArrowRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
@@ -107,7 +107,7 @@ export default function Footer() {
                         <li key={`col1-${link.label}`}>
                           <Link
                             href={link.href}
-                            className="text-sm tracking-tight text-white/80 transition-colors hover:text-white sm:text-base"
+                            className="text-sm tracking-tight text-white/80 transition-colors hover:text-red-300 sm:text-base"
                           >
                             {link.label}
                           </Link>
@@ -124,7 +124,7 @@ export default function Footer() {
                         <li key={`col2-${link.label}`}>
                           <Link
                             href={link.href}
-                            className="text-sm tracking-tight text-white/80 transition-colors hover:text-white sm:text-base"
+                            className="text-sm tracking-tight text-white/80 transition-colors hover:text-red-300 sm:text-base"
                           >
                             {link.label}
                           </Link>
@@ -140,7 +140,7 @@ export default function Footer() {
                       <li>
                         <a
                           href={`tel:${footer.contact.phone.replace(/\D/g, "")}`}
-                          className="transition-colors hover:text-white"
+                          className="transition-colors hover:text-red-300"
                         >
                           {footer.contact.phone}
                         </a>
@@ -148,7 +148,7 @@ export default function Footer() {
                       <li>
                         <a
                           href={`mailto:${footer.contact.email}`}
-                          className="transition-colors hover:text-white"
+                          className="transition-colors hover:text-red-300"
                         >
                           {footer.contact.email}
                         </a>
@@ -175,9 +175,10 @@ export default function Footer() {
             </div>
             <Link
               href="/contact-us"
-              className="inline-block text-sm font-medium tracking-tight text-white transition-colors hover:text-white/80 sm:text-base"
+              className="inline-flex items-center gap-2 text-sm font-medium tracking-tight text-red-300 transition-colors hover:text-white sm:text-base"
             >
               {footer.cta}
+              <ArrowRight className="h-4 w-4" />
             </Link>
             <p className="text-xs text-white/70 sm:text-sm">
               {footer.copyright}

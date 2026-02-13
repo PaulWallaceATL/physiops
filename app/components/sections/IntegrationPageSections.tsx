@@ -156,7 +156,7 @@ export default function IntegrationPageSections({
                       </ul>
                     </CardContent>
                     <CardFooter className="pt-4">
-                      <Button asChild className="w-full sm:w-auto">
+                      <Button asChild className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white border-0">
                         <Link href="/contact-us">{card.cta}</Link>
                       </Button>
                     </CardFooter>
@@ -204,7 +204,7 @@ export default function IntegrationPageSections({
             <p className="text-lg text-neutral-700 dark:text-neutral-300">
               {content.cta}
             </p>
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white border-0 shadow-lg shadow-red-900/20">
               <Link href="/contact-us">Request A Demo</Link>
             </Button>
           </motion.div>

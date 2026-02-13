@@ -141,13 +141,13 @@ export default function ProductBenefitsSection({ product }: { product: Product }
           >
             <Link
               href="/contact-us"
-              className="tracking-tight px-6 sm:px-8 py-2 sm:py-2.5 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium text-sm sm:text-base hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors duration-200 w-full sm:w-auto text-center"
+              className="tracking-tight px-6 sm:px-8 py-2 sm:py-2.5 rounded-lg bg-red-600 text-white font-medium text-sm sm:text-base hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 transition-colors duration-200 w-full sm:w-auto text-center shadow-lg shadow-red-900/20"
             >
               Contact sales
             </Link>
             <Link
               href="/contact-us"
-              className="tracking-tight px-6 sm:px-8 py-2 sm:py-2.5 rounded-lg bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white font-medium text-sm sm:text-base border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors duration-200 w-full sm:w-auto text-center"
+              className="tracking-tight px-6 sm:px-8 py-2 sm:py-2.5 rounded-lg bg-white dark:bg-neutral-900 text-red-600 dark:text-red-400 font-medium text-sm sm:text-base border-2 border-red-600 dark:border-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors duration-200 w-full sm:w-auto text-center"
             >
               Request a demo
             </Link>

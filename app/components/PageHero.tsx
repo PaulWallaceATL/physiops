@@ -36,7 +36,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
               </Link>
               <Link
                 href="/contact-us"
-                className="shrink-0 inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-white text-neutral-900 font-medium text-[max(0.9rem,1vmax)] hover:opacity-90 transition-opacity no-underline whitespace-nowrap"
+                className="shrink-0 inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-red-600 text-white font-medium text-[max(0.9rem,1vmax)] hover:bg-red-700 transition-colors no-underline whitespace-nowrap"
               >
                 Request A Demo
               </Link>

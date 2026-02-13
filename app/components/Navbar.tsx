@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -10,13 +10,48 @@ import Logo from "./Logo";
 const productsDropdownItems = mainNavigation.productsDropdown.items;
 const specialtiesDropdownItems = mainNavigation.specialtiesDropdown.items;
 
+const SCROLL_THRESHOLD = 60;
+
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
+  const [navVisible, setNavVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const updateNav = () => {
+      const y = window.scrollY;
+      if (y <= SCROLL_THRESHOLD) {
+        setNavVisible(true);
+      } else if (y > lastScrollY.current) {
+        setNavVisible(false);
+      } else {
+        setNavVisible(true);
+      }
+      lastScrollY.current = y;
+      ticking.current = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking.current) {
+        requestAnimationFrame(updateNav);
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="sticky top-0 z-[100] w-full bg-white px-6 py-4 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
+    <motion.nav
+      initial={false}
+      animate={{ y: navVisible ? 0 : "-100%" }}
+      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      className="fixed top-0 left-0 right-0 z-[100] w-full bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl px-6 py-4 border-b border-neutral-200/80 dark:border-neutral-800 shadow-sm dark:shadow-none"
+    >
       <div className="mx-auto w-full max-w-[1400px]">
         <motion.div
           className="flex items-center justify-between"
@@ -36,7 +71,7 @@ export default function Navbar() {
               {/* Home */}
               <Link
                 href="/"
-                className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white no-underline"
+                className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-red-600 dark:text-neutral-300 dark:hover:text-red-400 no-underline transition-colors"
               >
                 Home
               </Link>
@@ -47,7 +82,7 @@ export default function Navbar() {
                 onMouseEnter={() => setActiveMenu("products")}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
+                <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-red-600 dark:text-neutral-300 dark:hover:text-red-400 transition-colors">
                   Products
                   <ChevronDown className="h-4 w-4" />
                 </button>
@@ -68,7 +103,7 @@ export default function Navbar() {
                             <motion.div key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block rounded-md px-4 py-2.5 text-sm text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-900 no-underline"
+                                className="block rounded-md px-4 py-2.5 text-sm text-neutral-700 hover:bg-red-50 hover:text-red-700 dark:text-neutral-300 dark:hover:bg-red-950/30 dark:hover:text-red-300 no-underline transition-colors"
                               >
                                 <motion.span
                                   initial={{ opacity: 0, x: -10 }}
@@ -96,7 +131,7 @@ export default function Navbar() {
                 onMouseEnter={() => setActiveMenu("specialties")}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">
+                <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-red-600 dark:text-neutral-300 dark:hover:text-red-400 transition-colors">
                   Specialties
                   <ChevronDown className="h-4 w-4" />
                 </button>
@@ -117,7 +152,7 @@ export default function Navbar() {
                             <motion.div key={item.label}>
                               <Link
                                 href={item.href}
-                                className="block rounded-md px-4 py-2.5 text-sm text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-900 no-underline"
+                                className="block rounded-md px-4 py-2.5 text-sm text-neutral-700 hover:bg-red-50 hover:text-red-700 dark:text-neutral-300 dark:hover:bg-red-950/30 dark:hover:text-red-300 no-underline transition-colors"
                               >
                                 <motion.span
                                   initial={{ opacity: 0, x: -10 }}
@@ -142,7 +177,7 @@ export default function Navbar() {
               {/* Integration */}
               <Link
                 href="/ans-monitoring-integration"
-                className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white no-underline"
+                className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-red-600 dark:text-neutral-300 dark:hover:text-red-400 no-underline transition-colors"
               >
                 Integration
               </Link>
@@ -150,7 +185,7 @@ export default function Navbar() {
               {/* Contact */}
               <Link
                 href="/contact-us"
-                className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white no-underline"
+                className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:text-red-600 dark:text-neutral-300 dark:hover:text-red-400 no-underline transition-colors"
               >
                 Contact
               </Link>
@@ -162,7 +197,7 @@ export default function Navbar() {
             {/* Log In - primary action */}
             <Link
               href="/log-in"
-              className="hidden rounded-md bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 lg:block no-underline"
+              className="hidden rounded-md bg-red-600 px-5 py-2 text-sm font-medium text-white hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 lg:block no-underline transition-colors shadow-sm"
             >
               Log In
             </Link>
@@ -345,7 +380,7 @@ export default function Navbar() {
                   <Link
                     href="/log-in"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex w-full justify-center rounded-md bg-neutral-900 px-4 py-3 text-sm font-medium text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 no-underline"
+                    className="flex w-full justify-center rounded-md bg-red-600 px-4 py-3 text-sm font-medium text-white hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 no-underline transition-colors"
                   >
                     Log In
                   </Link>
@@ -355,6 +390,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

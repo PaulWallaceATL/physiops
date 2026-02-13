@@ -99,15 +99,15 @@ export default function SolutionsSection() {
                   onClick={() => handleTabClick(index)}
                   className={`w-full text-left p-4 md:p-6 rounded-2xl transition-[border-color,background-color] duration-200 flex-1 flex items-start border ${
                     isActive
-                      ? "bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
-                      : "bg-neutral-50 dark:bg-neutral-900 border-transparent hover:border-neutral-300 dark:hover:border-neutral-700"
+                      ? "bg-red-50/80 dark:bg-red-950/30 border-red-200 dark:border-red-800/50"
+                      : "bg-neutral-50 dark:bg-neutral-900 border-transparent hover:border-red-200 dark:hover:border-red-900/50"
                   }`}
                 >
                   <div className="flex items-start gap-4">
                     <div
                       className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 ${
                         isActive
-                          ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"
+                          ? "bg-red-600 text-white"
                           : "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white"
                       }`}
                     >
@@ -153,11 +153,11 @@ export default function SolutionsSection() {
               >
                 {/* Content Header */}
                 <div className="mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800 mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-600 mb-6">
                     {(() => {
                       const Icon = tabs[activeTab].icon;
                       return (
-                        <Icon className="w-8 h-8 text-neutral-900 dark:text-white" />
+                        <Icon className="w-8 h-8 text-white" />
                       );
                     })()}
                   </div>
@@ -181,9 +181,9 @@ export default function SolutionsSection() {
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700"
                     >
-                      <div className="shrink-0 w-6 h-6 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center mt-0.5">
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-red-600 flex items-center justify-center mt-0.5">
                         <svg
-                          className="w-4 h-4 text-white dark:text-neutral-900"
+                          className="w-4 h-4 text-white"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -205,7 +205,7 @@ export default function SolutionsSection() {
 
                 {/* CTA */}
                 <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-700">
-                  <Button asChild>
+                  <Button asChild className="bg-red-600 hover:bg-red-700 text-white border-0 shadow-lg shadow-red-900/20">
                     <Link href="/contact-us">{tabs[activeTab].cta}</Link>
                   </Button>
                 </div>
