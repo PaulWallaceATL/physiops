@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -218,16 +219,18 @@ export default function Navbar() {
         </motion.div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white dark:bg-neutral-950 lg:hidden"
-          >
+      {/* Mobile Menu Overlay - portaled so fixed inset-0 is relative to viewport (nav has transform) */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-[9998] bg-white dark:bg-neutral-950 lg:hidden"
+              >
             <div className="h-[73px] border-b border-neutral-200 dark:border-neutral-800" />
 
             <div className="mx-auto flex h-[calc(100%-73px)] max-w-[1400px] flex-col px-6">
@@ -389,7 +392,9 @@ export default function Navbar() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+          document.body
+        )}
     </motion.nav>
   );
 }
