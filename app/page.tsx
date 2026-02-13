@@ -1,10 +1,10 @@
 import Link from "next/link";
 import HomeHero from "@/app/components/HomeHero";
+import IntroSection from "@/app/components/sections/IntroSection";
 import { homepageContent } from "@/app/lib/data";
 
 export default function Home() {
   const {
-    intro,
     monitoring,
     valueProposition,
     convenience,
@@ -18,18 +18,15 @@ export default function Home() {
     workWithUs,
     tryIt,
     testimonials,
-    footer,
   } = homepageContent;
 
   return (
     <div>
       <HomeHero />
 
-      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
-        <section className="mb-12">
-          <p>{intro.paragraph}</p>
-        </section>
+      <IntroSection />
 
+      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
         <section className="mb-12">
           <h2>{monitoring.title}</h2>
           <p>{monitoring.subtitle}</p>
@@ -152,33 +149,6 @@ export default function Home() {
           </div>
           <p>{testimonials.cta}</p>
         </section>
-
-        <footer className="mt-12 border-t pt-8">
-          <div>
-            <div>
-              {footer.navigation.column1.map((link) => (
-                <Link key={`col1-${link.label}`} href={link.href}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div>
-              {footer.navigation.column2.map((link) => (
-                <Link key={`col2-${link.label}`} href={link.href}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p>{footer.contact.phone}</p>
-            <p>{footer.contact.email}</p>
-            <p>{footer.contact.address}</p>
-          </div>
-          <p>{footer.cta}</p>
-          <p>{footer.copyright}</p>
-          <p>{footer.legal}</p>
-        </footer>
       </div>
     </div>
   );
