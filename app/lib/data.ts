@@ -509,6 +509,47 @@ export const homepageContent = {
       "Living with autonomic dysfunction can be challenging. But imagine a world where technology empowers you to take control of your health. Physio PS is dedicated to making this vision a reality. We provide state-of-the-art autonomic monitoring software that allows patients to track their symptoms, monitor their progress, and gain insights into their condition.",
   },
   learnMoreCta: "Click to Learn More About The Autonomic Nervous System & It's Functions",
+  // Integration page (ANS Monitoring Integration)
+  integrationPage: {
+    intro:
+      "Physio PS autonomic function testing can be integrated into your practice, clinic, or organization. Our technology non-invasively monitors the Parasympathetic & Sympathetic (P&S) Nervous Systems independently, simultaneously, and quantitatively to improve diagnostic capability and therapy planning.",
+    whyIntegrate: {
+      headline: "Why Integrate ANS Monitoring",
+      paragraphs: [
+        "Autonomic nervous system (ANS) monitoring is an integral component of the clinical evaluation of patients with autonomic disorders. It identifies previously unknown autonomic dysfunction that can improve outcomes across a vast area of patient care.",
+        "Only Physio PS parasympathetic and sympathetic (P&S) monitoring quantifies the individual patient's responses to disease and therapy, unlike other forms of autonomic monitoring that only measure the sympathetic nervous system or heart rate variability (HRV).",
+        "Quantitative data of both P&S branches enables a more scientific approach to individualized healthcare, potentially reducing medication load, hospitalization, and re-hospitalization, and promoting preventative, proactive care.",
+      ],
+    },
+    whoItsFor: {
+      headline: "Wide Spanning Applications",
+      items: [
+        { category: "Medical Doctors", examples: "Cardiologists, GPs, Pain Management, Trauma, Psychologists, etc." },
+        { category: "Urgent Care Clinics", examples: "Effectively treat anxiety and fatigue when patients can't be treated by normal hospital visits" },
+        { category: "Insurance Companies / Corporate Organizations", examples: "Health assessment programs to reduce risk and save cost" },
+        { category: "Assisted Living, Nurse Care, Independent Living", examples: "Identify potential fall victims, more effectively manage medications" },
+        { category: "Veterans Administration", examples: "Addiction, PTSD treatment" },
+        { category: "Fitness Centers", examples: "Add physiological measurement to health assessment programs" },
+        { category: "Sports Medicine", examples: "Concussion detection and treatment, increased performance outcomes" },
+      ],
+    },
+    solutions: {
+      headline: "Integrate ANS Function Testing Into Your Business With",
+      subheadline: "Solutions Simplified For All",
+      productCards: products.map((p) => ({
+        title: p.title,
+        slug: p.slug,
+        features: p.features,
+        cta: "Request A Demo",
+      })),
+    },
+    providerFocus: {
+      title: "Provider Focus",
+      description:
+        "Our technology is able to provide physicians more information to improve their assessment and prioritize therapy planning for a broad spectrum of diseases such as heart disease, hypertension, diabetes, depression, anxiety, COPD, orthostatic intolerance, syncope, exercise intolerance, disorders of the brain (e.g. brain injury, including concussion) and nervous system (e.g., MSA, Alzheimer's, Parkinson's), sweating abnormalities, hormone imbalances, and early detection of sepsis.",
+    },
+    cta: "Contact us to learn how Physio PS technology can be integrated with your existing systems and workflows, or request a demo to get started.",
+  },
   workWithUs: {
     tagline: "It's Time To",
     headline: "Work With Us If...",
