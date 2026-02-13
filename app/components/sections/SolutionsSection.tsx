@@ -1,77 +1,218 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect, useRef } from "react";
+import { Monitor, Smartphone, Activity, type LucideIcon } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
-import StaggeredText from "@/app/components/StaggeredText";
+import { Button } from "@/components/ui/button";
+
+const PRODUCT_ICONS: LucideIcon[] = [Monitor, Smartphone, Activity];
 
 export default function SolutionsSection() {
   const { solutions } = homepageContent;
+  const [activeTab, setActiveTab] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const autoPlay = true;
+  const autoPlayDelay = 5000;
+  const tabs = solutions.productCards.map((card, i) => ({
+    icon: PRODUCT_ICONS[i] ?? Activity,
+    title: card.title,
+    description:
+      card.features[0] ?? "Physio PS autonomic function testing solutions.",
+    features: card.features,
+    slug: card.slug,
+    cta: card.cta,
+  }));
+
+  useEffect(() => {
+    if (!autoPlay || tabs.length === 0) return;
+
+    const startAutoPlay = () => {
+      intervalRef.current = setInterval(() => {
+        setActiveTab((prev) => (prev + 1) % tabs.length);
+      }, autoPlayDelay);
+    };
+
+    startAutoPlay();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [autoPlay, autoPlayDelay, tabs.length]);
+
+  const handleTabClick = (index: number) => {
+    setActiveTab(index);
+
+    if (autoPlay && intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = setInterval(() => {
+        setActiveTab((prev) => (prev + 1) % tabs.length);
+      }, autoPlayDelay);
+    }
+  };
 
   return (
-    <section className="relative z-10 w-full border-y border-neutral-200 bg-neutral-50 px-4 py-16 dark:border-neutral-800 dark:bg-neutral-900/50 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="space-y-10"
-        >
-          <div className="text-center">
-            <StaggeredText
-              as="h2"
-              text={solutions.headline}
-              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
-              segmentBy="words"
-              delay={60}
-              direction="top"
-            />
-            <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
-              {solutions.subheadline}
-            </p>
+    <section className="relative z-10 w-full py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-950 border-y border-neutral-200 dark:border-neutral-800">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-neutral-900 dark:text-white mb-4"
+          >
+            {solutions.headline}
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
+          >
+            {solutions.subheadline}
+          </motion.p>
+        </div>
+
+        {/* Tabbed Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          {/* Tab Navigation */}
+          <div className="lg:col-span-4 flex flex-col justify-between gap-4">
+            {tabs.map((tab, index) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === index;
+
+              return (
+                <motion.button
+                  key={tab.slug}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  onClick={() => handleTabClick(index)}
+                  className={`w-full text-left p-4 md:p-6 rounded-2xl transition-[border-color,background-color] duration-200 flex-1 flex items-start border ${
+                    isActive
+                      ? "bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                      : "bg-neutral-50 dark:bg-neutral-900 border-transparent hover:border-neutral-300 dark:hover:border-neutral-700"
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 ${
+                        isActive
+                          ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"
+                          : "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white"
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <h3
+                        className={`text-base md:text-lg font-semibold mb-1 ${
+                          isActive
+                            ? "text-neutral-900 dark:text-white"
+                            : "text-neutral-700 dark:text-neutral-300"
+                        }`}
+                      >
+                        {tab.title}
+                      </h3>
+                      <p
+                        className={`text-sm line-clamp-2 ${
+                          isActive
+                            ? "text-neutral-600 dark:text-neutral-400"
+                            : "text-neutral-500 dark:text-neutral-500"
+                        }`}
+                      >
+                        {tab.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.button>
+              );
+            })}
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {solutions.productCards.map((card, i) => (
+
+          {/* Tab Content */}
+          <div className="lg:col-span-8 flex">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.08 }}
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-3xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 p-6 md:p-8 lg:p-10 flex-1 flex flex-col"
               >
-                <Card className="flex h-full flex-col">
-                  <CardHeader>
-                    <CardTitle className="text-xl">{card.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1 pt-0">
-                    <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-                      {card.features.map((feature, j) => (
-                        <li key={j} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-400 dark:bg-neutral-500" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <CardFooter className="pt-4">
-                    <Button asChild className="w-full sm:w-auto">
-                      <Link href="/contact-us">{card.cta}</Link>
-                    </Button>
-                  </CardFooter>
-                </Card>
+                {/* Content Header */}
+                <div className="mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800 mb-6">
+                    {(() => {
+                      const Icon = tabs[activeTab].icon;
+                      return (
+                        <Icon className="w-8 h-8 text-neutral-900 dark:text-white" />
+                      );
+                    })()}
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-3">
+                    {tabs[activeTab].title}
+                  </h3>
+
+                  <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    {tabs[activeTab].description}
+                  </p>
+                </div>
+
+                {/* Feature List */}
+                <div className="space-y-4 flex-1">
+                  {tabs[activeTab].features.map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700"
+                    >
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center mt-0.5">
+                        <svg
+                          className="w-4 h-4 text-white dark:text-neutral-900"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-sm md:text-base text-neutral-700 dark:text-neutral-300 font-medium">
+                        {feature}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* CTA */}
+                <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-700">
+                  <Button asChild>
+                    <Link href="/contact-us">{tabs[activeTab].cta}</Link>
+                  </Button>
+                </div>
               </motion.div>
-            ))}
+            </AnimatePresence>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
