@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { useMemo } from "react";
+import { Hand } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
 import CenterFlow, { type NodeItem } from "@/app/components/CenterFlow";
 import StaggeredText from "@/app/components/StaggeredText";
@@ -42,7 +43,11 @@ export default function MonitoringSection() {
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
             {monitoring.subtitle}
           </p>
-          <div className="overflow-visible py-8 sm:py-12">
+          <div className="flex flex-col items-center gap-2 overflow-visible py-8 sm:py-12">
+            <p className="flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+              <Hand className="h-4 w-4 shrink-0" aria-hidden />
+              <span>Drag</span>
+            </p>
             <div className="w-full h-[380px] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[70vh] 2xl:h-[75vh] min-h-[380px] rounded-2xl">
               <CenterFlow
                 nodeItems={nodeItems}
