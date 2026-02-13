@@ -18,6 +18,20 @@ type ConditionsAccordionProps = {
   defaultValue?: string;
 };
 
+const accordionItems = (
+  conditions: Condition[],
+) =>
+  conditions.map((condition, index) => (
+    <AccordionItem key={`${condition.title}-${index}`} value={`item-${index}`}>
+      <AccordionTrigger className="text-left">
+        {condition.title}
+      </AccordionTrigger>
+      <AccordionContent className="text-muted-foreground">
+        {condition.description}
+      </AccordionContent>
+    </AccordionItem>
+  ));
+
 export default function ConditionsAccordion({
   conditions,
   type = "single",
@@ -25,26 +39,25 @@ export default function ConditionsAccordion({
 }: ConditionsAccordionProps) {
   if (conditions.length === 0) return null;
 
-  const firstValue = `item-0`;
-  const initialValue = defaultValue ?? (type === "single" ? firstValue : undefined);
+  const firstValue = "item-0";
+  const initialValue = defaultValue ?? firstValue;
+
+  if (type === "multiple") {
+    return (
+      <Accordion type="multiple" className="w-full">
+        {accordionItems(conditions)}
+      </Accordion>
+    );
+  }
 
   return (
     <Accordion
-      type={type}
+      type="single"
       defaultValue={initialValue}
       className="w-full"
-      collapsible={type === "single"}
+      collapsible
     >
-      {conditions.map((condition, index) => (
-        <AccordionItem key={`${condition.title}-${index}`} value={`item-${index}`}>
-          <AccordionTrigger className="text-left">
-            {condition.title}
-          </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">
-            {condition.description}
-          </AccordionContent>
-        </AccordionItem>
-      ))}
+      {accordionItems(conditions)}
     </Accordion>
   );
 }
