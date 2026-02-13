@@ -1,4 +1,5 @@
 import HomeHero from "@/app/components/HomeHero";
+import ScrollRevealContent from "@/app/components/ScrollRevealContent";
 import IntroSection from "@/app/components/sections/IntroSection";
 import MonitoringSection from "@/app/components/sections/MonitoringSection";
 import ValuePropositionSection from "@/app/components/sections/ValuePropositionSection";
@@ -16,18 +17,20 @@ export default function Home() {
   return (
     <div>
       <HomeHero />
-      <IntroSection />
-      <MonitoringSection />
-      <ValuePropositionSection />
-      <ConvenienceSection />
-      <ImprovedOutcomesSection />
-      <ApplicationsSection />
-      <SolutionsSection />
-      <ReportSection />
-      <ProviderPatientSection />
-      <WorkWithUsSection />
-      <TryItSection />
-      <TestimonialsSection />
+      <ScrollRevealContent>
+        <IntroSection />
+        <MonitoringSection />
+        <ValuePropositionSection />
+        <ConvenienceSection />
+        <ImprovedOutcomesSection />
+        <ApplicationsSection />
+        <SolutionsSection />
+        <ReportSection />
+        <ProviderPatientSection />
+        <WorkWithUsSection />
+        <TryItSection />
+        <TestimonialsSection />
+      </ScrollRevealContent>
     </div>
   );
 }
