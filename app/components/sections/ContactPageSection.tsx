@@ -61,7 +61,6 @@ export default function ContactPageSection() {
                     {footer.contact.email}
                   </a>
                 </p>
-                <p className="leading-relaxed">{footer.contact.address}</p>
               </CardContent>
             </Card>
           </motion.div>

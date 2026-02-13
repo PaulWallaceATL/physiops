@@ -53,13 +53,6 @@ export default function ContactTryItSection() {
               </div>
 
               <div className="space-y-4">
-                <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                  <p className="font-medium text-neutral-900 dark:text-white">
-                    Physio PS, Inc.
-                  </p>
-                  <p>{footer.contact.address}</p>
-                </div>
-
                 <div className="space-y-1 text-sm">
                   <a
                     href={`tel:${footer.contact.phone.replace(/\D/g, "")}`}

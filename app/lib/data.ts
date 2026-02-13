@@ -654,7 +654,6 @@ export const homepageContent = {
     contact: {
       phone: "603-287-1817",
       email: "info@physiops.com",
-      address: "80 Nashua Rd Building C Unit G1, Londonderry, NH 03053",
     },
     cta: "Become An Authorized Distributor",
     copyright: "Copyright 2026 Physio PS, Inc. All Rights Reserved.",

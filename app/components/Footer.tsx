@@ -165,7 +165,6 @@ export default function Footer() {
                           {footer.contact.email}
                         </a>
                       </li>
-                      <li className="max-w-xs">{footer.contact.address}</li>
                     </ul>
                   </div>
                 </div>

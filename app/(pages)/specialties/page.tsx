@@ -1,43 +1,41 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 import PageHero from "@/app/components/PageHero";
+import DepthCard from "@/app/components/depth-card";
 import { specialties } from "@/app/lib/data";
 
-const ParallaxCards = dynamic(
-  () => import("@/app/components/parallax-cards").then((m) => m.default),
-  { ssr: false, loading: () => <div className="min-h-[70vh] flex items-center justify-center bg-neutral-100 dark:bg-neutral-900" /> }
-);
-
-const DEFAULT_IMAGE =
-  "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80";
-
 export default function SpecialtiesPage() {
-  const router = useRouter();
-  const images = specialties.map((s) => s.image ?? DEFAULT_IMAGE);
-
-  const handleCardClick = (index: number) => {
-    const specialty = specialties[index];
-    if (specialty) router.push(`/specialties/${specialty.slug}`);
-  };
-
   return (
     <div>
       <PageHero
         title="Specialties"
         subtitle="P&S monitoring and therapy insights for clinical practice across medical specialties."
       />
-      <section className="relative z-10 w-full min-h-screen bg-neutral-100 dark:bg-neutral-900">
-        <ParallaxCards
-          images={images}
-          enableDepthFog={true}
-          fogIntensity={1.2}
-          enableMagneticAttraction={true}
-          magneticStrength={50}
-          onCardClick={handleCardClick}
-          className="w-full min-h-[70vh] sm:min-h-[80vh]"
-        />
+      <section className="relative z-10 w-full py-16 sm:py-20 md:py-24 bg-neutral-100 dark:bg-neutral-900">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 justify-items-center">
+            {specialties.map((specialty) => (
+              <DepthCard
+                key={specialty.slug}
+                title={specialty.title}
+                description={
+                  specialty.conditions.length > 0
+                    ? `${specialty.conditions.length} conditions — ${specialty.conditions[0].title} and more.`
+                    : "P&S monitoring and therapy insights for clinical practice."
+                }
+                buttonText="View specialty"
+                href={`/specialties/${specialty.slug}`}
+                width={340}
+                height={380}
+                maxRotation={12}
+                maxTranslation={14}
+                disableOnMobile={true}
+                spotlight={false}
+                className="w-full max-w-[340px]"
+              />
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );
