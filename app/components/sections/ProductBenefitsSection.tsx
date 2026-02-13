@@ -159,9 +159,9 @@ export default function ProductBenefitsSection({ product }: { product: Product }
           {benefits.map((benefit, index) => {
             const Icon = BENEFIT_ICONS[index % BENEFIT_ICONS.length];
             const hasBorderB = index < lastRowStart;
-            const hasBorderR-md = index % 2 === 0 && index !== benefits.length - 1;
-            const hasBorderR-lg = (index + 1) % 3 !== 0 && index !== benefits.length - 1;
-            const hasBorderB-lg = index < benefits.length - 3;
+            const hasBorderRMd = index % 2 === 0 && index !== benefits.length - 1;
+            const hasBorderRLg = (index + 1) % 3 !== 0 && index !== benefits.length - 1;
+            const hasBorderBLg = index < benefits.length - 3;
             return (
               <motion.div
                 key={benefit}
@@ -171,9 +171,9 @@ export default function ProductBenefitsSection({ product }: { product: Product }
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className={`p-8 md:p-10 bg-white dark:bg-neutral-950
                   ${hasBorderB ? "border-b border-neutral-200 dark:border-neutral-800" : ""}
-                  ${hasBorderR-md ? "md:border-r border-neutral-200 dark:border-neutral-800" : ""}
-                  ${hasBorderR-lg ? "lg:border-r border-neutral-200 dark:border-neutral-800" : ""}
-                  ${hasBorderB-lg ? "lg:border-b border-neutral-200 dark:border-neutral-800" : ""}
+                  ${hasBorderRMd ? "md:border-r border-neutral-200 dark:border-neutral-800" : ""}
+                  ${hasBorderRLg ? "lg:border-r border-neutral-200 dark:border-neutral-800" : ""}
+                  ${hasBorderBLg ? "lg:border-b border-neutral-200 dark:border-neutral-800" : ""}
                 `}
               >
                 <div className="flex justify-center mb-8">
