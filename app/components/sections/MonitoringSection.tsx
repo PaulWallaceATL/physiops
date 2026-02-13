@@ -22,8 +22,8 @@ export default function MonitoringSection() {
   );
 
   return (
-    <section className="relative z-10 w-full bg-white px-4 py-16 dark:bg-neutral-950 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
+    <section className="relative z-10 w-full overflow-visible bg-white px-4 py-16 dark:bg-neutral-950 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,18 +42,18 @@ export default function MonitoringSection() {
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
             {monitoring.subtitle}
           </p>
-          <div className="h-[380px] w-full min-[480px]:h-[440px] sm:h-[520px] md:h-[600px] lg:h-[640px]">
-            <div className="h-full w-full scale-[0.7] origin-center min-[480px]:scale-90 sm:scale-100">
+          <div className="overflow-visible py-8 sm:py-12">
+            <div className="w-full h-[380px] sm:h-[45vh] md:h-[55vh] lg:h-[65vh] xl:h-[70vh] 2xl:h-[75vh] min-h-[380px] rounded-2xl">
               <CenterFlow
                 nodeItems={nodeItems}
                 centerContent="PS"
                 centerSize={80}
                 nodeSize={44}
                 variableNodeWidth
-                nodeDistance={0.92}
+                nodeDistance={0.9}
                 pulseDuration={4}
                 pulseInterval={8}
-                className="rounded-2xl h-full min-h-[380px]"
+                className="h-full min-h-[380px]"
               />
             </div>
           </div>

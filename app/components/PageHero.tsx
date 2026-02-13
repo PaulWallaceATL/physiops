@@ -16,7 +16,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
     <section className="relative z-10 w-full min-h-screen overflow-hidden bg-neutral-100 dark:bg-neutral-900">
       <div className="relative flex min-h-screen flex-col p-[4vmax]">
         {/* Content box: RisingLines only in this container; content on top */}
-        <div className="relative flex-1 min-h-[calc(100vh-8vmax)] rounded-[3vmax] overflow-hidden bg-black">
+        <div className="relative flex-1 min-h-[calc(100vh-8vmax)] min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] rounded-[3vmax] overflow-hidden bg-black">
           <RisingLines
             color="#dc2626"
             horizonColor="#dc2626"

@@ -10,7 +10,7 @@ export default function ConvenienceSection() {
 
   return (
     <section className="relative z-10 w-full bg-white px-4 py-16 dark:bg-neutral-950 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl xl:max-w-4xl 2xl:max-w-5xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

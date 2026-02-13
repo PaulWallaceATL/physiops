@@ -8,7 +8,7 @@ export default function IntroSection() {
 
   return (
     <section className="relative z-10 w-full bg-white px-4 py-16 sm:px-6 sm:py-20 dark:bg-neutral-950">
-      <div className="mx-auto max-w-5xl w-full">
+      <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl w-full">
         <GradientText
           className="!max-w-full w-full"
           innerClassName=""

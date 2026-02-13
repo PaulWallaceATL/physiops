@@ -419,7 +419,7 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden ${className || ""}`}
+      className={`relative w-full h-full overflow-visible ${className || ""}`}
       style={{ background: "transparent" }}
     >
       <svg
