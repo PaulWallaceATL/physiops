@@ -174,6 +174,8 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const [pulses, setPulses] = useState<PulseState[]>([]);
   const [pulseSegments, setPulseSegments] = useState<PulseSegment[]>([]);
+  const [nodeOffsets, setNodeOffsets] = useState<Record<number, { x: number; y: number }>>({});
+  const dragRef = useRef<{ index: number; startX: number; startY: number; startOffsetX: number; startOffsetY: number } | null>(null);
 
   const nodes = useMemo(
     () => generateNodePositions(nodeCount, nodeDistance),
@@ -279,9 +281,51 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
     return () => cancelAnimationFrame(frameId);
   }, [pulseDuration, onPulseArrive]);
 
+  const getDisplayPosition = useCallback(
+    (i: number) => {
+      const pos = nodePositions[i];
+      const off = nodeOffsets[i];
+      return {
+        x: pos.x + (off?.x ?? 0),
+        y: pos.y + (off?.y ?? 0),
+      };
+    },
+    [nodePositions, nodeOffsets],
+  );
+
+  useEffect(() => {
+    const onPointerMove = (e: PointerEvent) => {
+      const d = dragRef.current;
+      if (!d) return;
+      setNodeOffsets((prev) => ({
+        ...prev,
+        [d.index]: {
+          x: d.startOffsetX + (e.clientX - d.startX),
+          y: d.startOffsetY + (e.clientY - d.startY),
+        },
+      }));
+    };
+    const onPointerUp = (e: PointerEvent) => {
+      const d = dragRef.current;
+      if (!d) return;
+      try {
+        (e.target as HTMLElement)?.releasePointerCapture?.(e.pointerId);
+      } catch (_) {}
+      dragRef.current = null;
+    };
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+    };
+  }, []);
+
   useEffect(() => {
     pathCacheRef.current.clear();
-  }, [nodePositions, center]);
+  }, [nodePositions, center, nodeOffsets]);
 
   useEffect(() => {
     let frameId: number;
@@ -292,14 +336,17 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
       const segments: PulseSegment[] = [];
 
       for (const pulse of pulses) {
-        const from = nodePositions[pulse.pathIndex];
-        if (!from) continue;
+        const from = getDisplayPosition(pulse.pathIndex);
+        const basePos = nodePositions[pulse.pathIndex];
+        if (!basePos) continue;
 
         let path = pathCacheRef.current.get(pulse.pathIndex);
         if (!path) {
           path = document.createElementNS("http://www.w3.org/2000/svg", "path");
           path.setAttribute("d", generatePathD(from, center));
           pathCacheRef.current.set(pulse.pathIndex, path);
+        } else {
+          path.setAttribute("d", generatePathD(from, center));
         }
 
         const progress = Math.min((now - pulse.startTime) / duration, 1);
@@ -343,7 +390,7 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
 
     frameId = requestAnimationFrame(calculateSegments);
     return () => cancelAnimationFrame(frameId);
-  }, [pulses, nodePositions, center, pulseDuration, pulseLength]);
+  }, [pulses, nodePositions, center, nodeOffsets, getDisplayPosition, pulseDuration, pulseLength]);
 
   const nodeStyle = useMemo(
     () => ({
@@ -464,10 +511,10 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
           ))}
         </defs>
 
-        {nodePositions.map((node, i) => (
+        {nodePositions.map((_, i) => (
           <path
             key={i}
-            d={generatePathD(node, center)}
+            d={generatePathD(getDisplayPosition(i), center)}
             fill="none"
             stroke={activeLineColor}
             strokeWidth={lineWidth}
@@ -498,19 +545,34 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
         ))}
       </svg>
 
-      {nodePositions.map((node, i) => {
+      {nodePositions.map((_, i) => {
         const nodeItem = nodeItems[i];
         const hasCustomContent = nodeItem?.content !== undefined;
+        const pos = getDisplayPosition(i);
+
+        const onPointerDown = (e: React.PointerEvent) => {
+          e.preventDefault();
+          dragRef.current = {
+            index: i,
+            startX: e.clientX,
+            startY: e.clientY,
+            startOffsetX: nodeOffsets[i]?.x ?? 0,
+            startOffsetY: nodeOffsets[i]?.y ?? 0,
+          };
+          (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+        };
 
         return (
           <div
             key={i}
-            className="absolute transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+            className="absolute transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center touch-none select-none cursor-grab active:cursor-grabbing"
             style={{
-              left: node.x,
-              top: node.y,
+              left: pos.x,
+              top: pos.y,
+              touchAction: "none",
               ...nodeStyle,
             }}
+            onPointerDown={onPointerDown}
           >
             {hasCustomContent ? nodeItem!.content : defaultNodeContent}
           </div>
