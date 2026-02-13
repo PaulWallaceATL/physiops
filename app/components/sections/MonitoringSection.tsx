@@ -50,7 +50,7 @@ export default function MonitoringSection() {
                 centerSize={80}
                 nodeSize={44}
                 variableNodeWidth
-                nodeDistance={0.86}
+                nodeDistance={0.92}
                 pulseDuration={4}
                 pulseInterval={8}
                 className="rounded-2xl h-full min-h-[380px]"

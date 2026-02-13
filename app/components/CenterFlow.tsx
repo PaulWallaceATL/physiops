@@ -104,7 +104,7 @@ const generateNodePositions = (count: number, distance: number) => {
   const clampedCount = Math.max(2, Math.min(20, count));
   const nodes: { x: number; y: number }[] = new Array(clampedCount);
   const angleStep = (Math.PI * 2) / clampedCount;
-  const radius = distance * 45;
+  const radius = distance * 52;
 
   for (let i = 0; i < clampedCount; i++) {
     const angle = i * angleStep - Math.PI / 2;
