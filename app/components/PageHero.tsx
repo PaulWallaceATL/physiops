@@ -11,18 +11,18 @@ type PageHeroProps = {
 
 export default function PageHero({ title, subtitle }: PageHeroProps) {
   return (
-    <section className="relative z-10 w-full min-h-screen overflow-hidden bg-white dark:bg-neutral-950">
-      {/* Content - Hero3 layout, no WebGL canvas */}
+    <section className="relative z-10 w-full min-h-screen overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+      {/* Content - Hero3 layout */}
       <div className="relative flex min-h-screen flex-col p-[4vmax]">
         <div className="flex flex-1 relative w-full overflow-hidden">
-          {/* Header with label and CTA */}
-          <div className="p-[4vmax] text-[max(1.2rem,1.3vmax)] text-neutral-900 dark:text-white flex justify-between items-start">
-            <Link href="/" className="leading-tight font-semibold no-underline">
+          {/* Header: logo left, Request A Demo right */}
+          <div className="absolute top-0 left-0 right-0 flex w-full items-center justify-between p-[4vmax]">
+            <Link href="/" className="leading-tight font-semibold text-neutral-900 dark:text-white no-underline shrink-0">
               Physio PS
             </Link>
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium text-[max(0.9rem,1vmax)] hover:opacity-90 transition-opacity no-underline"
+              className="shrink-0 inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium text-[max(0.9rem,1vmax)] hover:opacity-90 transition-opacity no-underline whitespace-nowrap"
             >
               Request A Demo
             </Link>
