@@ -26,6 +26,7 @@ export default function PreloaderWrapper({
       loadingText="Physio PS"
       loadingTextLine2="Complete Autonomic Function Testing"
       zIndex={100}
+      textClassName="!text-red-500"
     >
       {children}
     </Preloader>

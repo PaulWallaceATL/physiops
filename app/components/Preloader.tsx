@@ -347,7 +347,7 @@ const Preloader: React.FC<PreloaderProps> = ({
             }}
           >
             {!bgColor && (
-              <div className="w-full h-full bg-black dark:bg-[#5227FF]" />
+              <div className="w-full h-full bg-black" />
             )}
           </motion.div>
         ))}
@@ -460,7 +460,7 @@ const Preloader: React.FC<PreloaderProps> = ({
           }}
           className={cn(
             "rounded-full aspect-square",
-            bgColor ? "" : "bg-black dark:bg-[#5227FF]",
+            bgColor ? "" : "bg-black",
           )}
           style={{
             width: "300vmax",
@@ -506,10 +506,10 @@ const Preloader: React.FC<PreloaderProps> = ({
           className="w-full h-full"
           style={{ backgroundColor: bgColor || undefined }}
         >
-          {!bgColor && (
-            <div className="w-full h-full bg-black dark:bg-[#5227FF]" />
-          )}
-        </motion.div>
+{!bgColor && (
+          <div className="w-full h-full bg-black" />
+        )}
+      </motion.div>
         {renderLoadingText()}
       </div>
     );
@@ -550,7 +550,7 @@ const Preloader: React.FC<PreloaderProps> = ({
           style={{ backgroundColor: bgColor || undefined }}
         >
           {!bgColor && (
-            <div className="w-full h-full bg-black dark:bg-[#5227FF]" />
+            <div className="w-full h-full bg-black" />
           )}
         </motion.div>
 
@@ -572,7 +572,7 @@ const Preloader: React.FC<PreloaderProps> = ({
           style={{ backgroundColor: bgColor || undefined }}
         >
           {!bgColor && (
-            <div className="w-full h-full bg-black dark:bg-[#5227FF]" />
+            <div className="w-full h-full bg-black" />
           )}
         </motion.div>
         {renderLoadingText()}

@@ -3,6 +3,9 @@
 import { motion } from "motion/react";
 import { homepageContent } from "@/app/lib/data";
 import StaggeredText from "@/app/components/StaggeredText";
+import GradientText from "@/app/components/GradientText";
+
+const RED_GRADIENT_COLORS = ["#dc2626", "#ef4444", "#b91c1c", "#991b1b"];
 
 export default function ImprovedOutcomesSection() {
   const { improvedOutcomes } = homepageContent;
@@ -25,19 +28,19 @@ export default function ImprovedOutcomesSection() {
             delay={60}
             direction="top"
           />
-          <p className="text-lg text-neutral-700 dark:text-neutral-300">
-            {improvedOutcomes.subheadline}
-          </p>
-          <div className="space-y-4">
+          <GradientText
+            colors={RED_GRADIENT_COLORS}
+            block
+            className="max-w-none text-lg sm:text-xl"
+            innerClassName="text-lg sm:text-xl leading-relaxed"
+          >
+            <p className="mb-4">{improvedOutcomes.subheadline}</p>
             {improvedOutcomes.body.map((paragraph, i) => (
-              <p
-                key={i}
-                className="text-base leading-relaxed text-neutral-700 dark:text-neutral-300"
-              >
+              <p key={i} className={i < improvedOutcomes.body.length - 1 ? "mb-4" : ""}>
                 {paragraph}
               </p>
             ))}
-          </div>
+          </GradientText>
         </motion.div>
       </div>
     </section>
