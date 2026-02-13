@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Stethoscope, Heart } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
 
@@ -14,7 +14,6 @@ const PATIENT_IMAGE =
 export default function ProviderPatientSection() {
   const { providerFocus, patientFocus, learnMoreCta } = homepageContent;
   const [activeIndex, setActiveIndex] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const features = [
     {
@@ -31,32 +30,7 @@ export default function ProviderPatientSection() {
     },
   ];
 
-  useEffect(() => {
-    const startAutoPlay = () => {
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % features.length);
-      }, 5000);
-    };
-
-    startAutoPlay();
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [features.length]);
-
-  const handleFeatureClick = (index: number) => {
-    setActiveIndex(index);
-
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % features.length);
-      }, 5000);
-    }
-  };
+  const setFocus = (index: number) => setActiveIndex(index);
 
   return (
     <section className="relative z-10 w-full py-8 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-950 border-y border-neutral-200 dark:border-neutral-800">
@@ -80,7 +54,8 @@ export default function ProviderPatientSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                    onClick={() => handleFeatureClick(index)}
+                    onMouseEnter={() => setFocus(index)}
+                    onClick={() => setFocus(index)}
                     className={`w-full text-left flex items-center gap-3 py-3 px-4 rounded-lg transition-[background-color] duration-200 ${
                       isActive
                         ? "bg-neutral-100 dark:bg-neutral-900"

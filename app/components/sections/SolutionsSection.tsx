@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Monitor, Smartphone, Activity, type LucideIcon } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
 import { Button } from "@/components/ui/button";
@@ -12,10 +12,7 @@ const PRODUCT_ICONS: LucideIcon[] = [Monitor, Smartphone, Activity];
 export default function SolutionsSection() {
   const { solutions } = homepageContent;
   const [activeTab, setActiveTab] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const autoPlay = true;
-  const autoPlayDelay = 5000;
   const tabs = solutions.productCards.map((card, i) => ({
     icon: PRODUCT_ICONS[i] ?? Activity,
     title: card.title,
@@ -26,34 +23,7 @@ export default function SolutionsSection() {
     cta: card.cta,
   }));
 
-  useEffect(() => {
-    if (!autoPlay || tabs.length === 0) return;
-
-    const startAutoPlay = () => {
-      intervalRef.current = setInterval(() => {
-        setActiveTab((prev) => (prev + 1) % tabs.length);
-      }, autoPlayDelay);
-    };
-
-    startAutoPlay();
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [autoPlay, autoPlayDelay, tabs.length]);
-
-  const handleTabClick = (index: number) => {
-    setActiveTab(index);
-
-    if (autoPlay && intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = setInterval(() => {
-        setActiveTab((prev) => (prev + 1) % tabs.length);
-      }, autoPlayDelay);
-    }
-  };
+  const setTab = (index: number) => setActiveTab(index);
 
   return (
     <section className="relative z-10 w-full py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-950 border-y border-neutral-200 dark:border-neutral-800">
@@ -96,7 +66,8 @@ export default function SolutionsSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  onClick={() => handleTabClick(index)}
+                  onMouseEnter={() => setTab(index)}
+                  onClick={() => setTab(index)}
                   className={`w-full text-left p-4 md:p-6 rounded-2xl transition-[border-color,background-color] duration-200 flex-1 flex items-start border ${
                     isActive
                       ? "bg-red-50/80 dark:bg-red-950/30 border-red-200 dark:border-red-800/50"

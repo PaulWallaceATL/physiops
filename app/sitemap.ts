@@ -5,6 +5,8 @@ import { products, specialties } from "@/app/lib/data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = [
     { url: SITE_URL, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
+    { url: `${SITE_URL}/products`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${SITE_URL}/specialties`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
     { url: `${SITE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${SITE_URL}/contact-us`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${SITE_URL}/integration`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },

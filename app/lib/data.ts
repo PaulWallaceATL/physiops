@@ -10,6 +10,8 @@ export type Product = {
   slug: string;
   features: string[];
   benefits: string[];
+  /** Image URL for listing/cards (e.g. Parallax Cards) */
+  image?: string;
 };
 
 export type Condition = {
@@ -21,6 +23,8 @@ export type Specialty = {
   title: string;
   slug: string;
   conditions: Condition[];
+  /** Image URL for listing/cards (e.g. Parallax Cards) */
+  image?: string;
 };
 
 export type NavLink = {
@@ -39,6 +43,8 @@ export const products: Product[] = [
   {
     title: "Clinical Monitoring Unit",
     slug: "clinical-monitoring-unit",
+    image:
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80",
     features: [
       "The perfect addition to any clinic",
       "Offer your patients greater insight",
@@ -59,6 +65,8 @@ export const products: Product[] = [
   {
     title: "Remote Monitoring Unit",
     slug: "remote-monitoring-unit",
+    image:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     features: [
       "Bring Physio PS on the go",
       "Improve quality of life",
@@ -79,6 +87,8 @@ export const products: Product[] = [
   {
     title: "Portable Autonomic Lab",
     slug: "portable-autonomic-lab",
+    image:
+      "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
     features: [
       "Portable & deployable",
       "Perfect for the clinician on the go",
@@ -97,10 +107,20 @@ export const products: Product[] = [
 
 // --- 2. Specialties (medical conditions by specialty) -------------------------
 
+const specialtyImages = [
+  "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
+  "https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&q=80",
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80",
+  "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
+  "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
+];
+
 export const specialties: Specialty[] = [
   {
     title: "Neurology",
     slug: "neurology",
+    image: specialtyImages[0],
     conditions: [
       {
         title: "Headaches",
@@ -217,6 +237,7 @@ export const specialties: Specialty[] = [
   {
     title: "Pulmonology",
     slug: "pulmonology",
+    image: specialtyImages[1],
     conditions: [
       {
         title: "Sleep Disturbances (e.g., Central or Obstructive Sleep Apnea)",
@@ -238,6 +259,7 @@ export const specialties: Specialty[] = [
   {
     title: "Cardiology",
     slug: "cardiology",
+    image: specialtyImages[2],
     conditions: [
       {
         title: "Hypertension",
@@ -283,6 +305,7 @@ export const specialties: Specialty[] = [
   {
     title: "Endocrinology",
     slug: "endocrinology",
+    image: specialtyImages[3],
     conditions: [
       {
         title: "Thyroid Disorders",
@@ -304,6 +327,7 @@ export const specialties: Specialty[] = [
   {
     title: "Nephrology",
     slug: "nephrology",
+    image: specialtyImages[4],
     conditions: [
       {
         title: "Hypertensive Renal Disease or Renal Failure",
@@ -315,6 +339,7 @@ export const specialties: Specialty[] = [
   {
     title: "Internal Medicine",
     slug: "internal-medicine",
+    image: specialtyImages[5],
     conditions: [
       {
         title: "Morbid Obesity",
@@ -380,12 +405,19 @@ export const mainNavigation = {
   productsDropdown: {
     label: "Products",
     href: "/products",
-    items: products.map((p) => ({ label: p.title, href: `/products/${p.slug}` })),
+    items: [
+      { label: "All Products", href: "/products" },
+      ...products.map((p) => ({ label: p.title, href: `/products/${p.slug}` })),
+    ],
   } as NavDropdown & { href: string },
   specialtiesDropdown: {
     label: "Specialties",
-    items: specialties.map((s) => ({ label: s.title, href: `/specialties/${s.slug}` })),
-  } as NavDropdown,
+    href: "/specialties",
+    items: [
+      { label: "All Specialties", href: "/specialties" },
+      ...specialties.map((s) => ({ label: s.title, href: `/specialties/${s.slug}` })),
+    ],
+  } as NavDropdown & { href: string },
 };
 
 // --- 4. Homepage sections content ----------------------------------------------
