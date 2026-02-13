@@ -57,9 +57,9 @@ const hexToRgb = (hex: string): THREE.Vector3 => {
  */
 export const RisingLines = ({
   className,
-  color = "#33AAFF",
-  horizonColor = "#33AAFF",
-  haloColor = "#33FFFF",
+  color = "#dc2626",
+  horizonColor = "#dc2626",
+  haloColor = "#f87171",
   riseSpeed = 0.1,
   riseScale = 11.5,
   riseIntensity = 1.0,

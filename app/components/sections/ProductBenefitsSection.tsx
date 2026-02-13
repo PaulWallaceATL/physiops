@@ -167,24 +167,26 @@ export default function ProductBenefitsSection({ product }: { product: Product }
                 key={benefit}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`p-8 md:p-10 bg-white dark:bg-neutral-950
+                className={`group p-8 md:p-10 bg-white dark:bg-neutral-950 cursor-default transition-colors duration-200
                   ${hasBorderB ? "border-b border-neutral-200 dark:border-neutral-800" : ""}
                   ${hasBorderRMd ? "md:border-r border-neutral-200 dark:border-neutral-800" : ""}
                   ${hasBorderRLg ? "lg:border-r border-neutral-200 dark:border-neutral-800" : ""}
                   ${hasBorderBLg ? "lg:border-b border-neutral-200 dark:border-neutral-800" : ""}
+                  hover:bg-red-50/50 dark:hover:bg-red-950/20
                 `}
               >
                 <div className="flex justify-center mb-8">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
                     <Icon
-                      className="w-full h-full text-neutral-900 dark:text-white"
+                      className="w-full h-full text-neutral-900 dark:text-white transition-colors duration-200 group-hover:text-red-600 dark:group-hover:text-red-400"
                       strokeWidth={0.5}
                     />
                   </div>
                 </div>
-                <h3 className="text-lg tracking-tight sm:text-xl font-semibold text-neutral-900 dark:text-white mb-3">
+                <h3 className="text-lg tracking-tight sm:text-xl font-semibold text-neutral-900 dark:text-white mb-3 transition-colors duration-200 group-hover:text-red-800 dark:group-hover:text-red-300">
                   {benefit}
                 </h3>
                 <p className="text-sm tracking-tight sm:text-base text-neutral-600 dark:text-neutral-400 leading-normal">

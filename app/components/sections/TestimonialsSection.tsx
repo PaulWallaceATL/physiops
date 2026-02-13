@@ -36,11 +36,11 @@ export default function TestimonialsSection() {
         className="absolute inset-0 z-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 60% 20%, rgba(160, 90, 255, 1), transparent 65%),
-            radial-gradient(ellipse 70% 60% at 20% 80%, rgba(255, 80, 160, 1), transparent 65%),
-            radial-gradient(ellipse 60% 50% at 60% 65%, rgba(255, 180, 50, 1), transparent 62%),
-            radial-gradient(ellipse 65% 40% at 50% 60%, rgba(100, 170, 255, 1), transparent 68%),
-            linear-gradient(180deg, #d4b0ff 0%, #ffb0d0 100%)
+            radial-gradient(ellipse 80% 60% at 60% 20%, rgba(220, 38, 38, 0.4), transparent 65%),
+            radial-gradient(ellipse 70% 60% at 20% 80%, rgba(185, 28, 28, 0.35), transparent 65%),
+            radial-gradient(ellipse 60% 50% at 60% 65%, rgba(127, 29, 29, 0.3), transparent 62%),
+            radial-gradient(ellipse 65% 40% at 50% 60%, rgba(0, 0, 0, 0.25), transparent 68%),
+            linear-gradient(180deg, rgba(220, 38, 38, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%)
           `,
         }}
       />

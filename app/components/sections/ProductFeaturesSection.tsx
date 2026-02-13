@@ -78,15 +78,16 @@ export default function ProductFeaturesSection({ product }: { product: Product }
                 key={feature}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="flex flex-col"
+                className="group flex flex-col cursor-default"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-lg shrink-0">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-900 dark:text-white" />
+                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 shadow-lg shrink-0 transition-all duration-200 group-hover:border-red-600/60 dark:group-hover:border-red-500/50 group-hover:shadow-md group-hover:shadow-red-950/10">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-900 dark:text-white transition-colors duration-200 group-hover:text-red-600 dark:group-hover:text-red-400" />
                   </div>
-                  <h3 className="text-base tracking-tight font-light text-neutral-900 dark:text-white">
+                  <h3 className="text-base tracking-tight font-light text-neutral-900 dark:text-white transition-colors duration-200 group-hover:text-red-800 dark:group-hover:text-red-300">
                     {title}
                   </h3>
                 </div>

@@ -12,7 +12,7 @@ export default function IntroSection() {
         <GradientText
           className="!max-w-full w-full"
           innerClassName=""
-          colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+          colors={["#dc2626", "#ef4444", "#b91c1c", "#991b1b"]}
           animationSpeed={10}
           direction="horizontal"
           yoyo

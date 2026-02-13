@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { mainNavigation } from "@/app/lib/data";
+import Logo from "./Logo";
 
 const productsDropdownItems = mainNavigation.productsDropdown.items;
 const specialtiesDropdownItems = mainNavigation.specialtiesDropdown.items;
@@ -26,11 +27,8 @@ export default function Navbar() {
           {/* Left Side */}
           <div className="flex items-center gap-8">
             {/* Logo */}
-            <Link
-              href="/"
-              className="text-xl font-semibold text-neutral-900 dark:text-white z-50 no-underline"
-            >
-              Physio PS
+            <Link href="/" className="z-50 no-underline flex items-center" aria-label="Physio PS Home">
+              <Logo />
             </Link>
 
             {/* Navigation Items */}

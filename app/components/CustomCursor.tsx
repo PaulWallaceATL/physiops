@@ -126,8 +126,20 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
   );
   const [activeTarget, setActiveTarget] = useState<number | null>(null);
 
-  const resolvedCircleColor = circleColor ?? (isDark ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)");
-  const resolvedDotColor = dotColor ?? (isDark ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)");
+  const resolvedCircleColor =
+    circleColor ??
+    (mixBlendMode === "difference"
+      ? "white"
+      : isDark
+        ? "rgb(255, 255, 255)"
+        : "rgb(0, 0, 0)");
+  const resolvedDotColor =
+    dotColor ??
+    (mixBlendMode === "difference"
+      ? "white"
+      : isDark
+        ? "rgb(255, 255, 255)"
+        : "rgb(0, 0, 0)");
 
   const cursorX = useMotionValue(
     typeof window !== "undefined" ? window.innerWidth / 2 : 0,
