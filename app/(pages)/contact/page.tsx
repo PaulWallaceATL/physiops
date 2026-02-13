@@ -11,7 +11,7 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle={tryIt.description}
       />
-      <div className="mx-auto max-w-3xl px-6 py-12">
+      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
         <section>
           <h2 className="mb-6 text-xl font-semibold">{tryIt.headline}</h2>
           <ContactForm />

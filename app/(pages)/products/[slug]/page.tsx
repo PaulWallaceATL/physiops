@@ -28,7 +28,7 @@ export default async function ProductPage({
     <div>
       <HeroSection title={product.title} subtitle={subtitle} />
 
-      <div className="mx-auto max-w-3xl px-6 py-12">
+      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
         <section className="mb-12">
           <h2>Features</h2>
           <ul>

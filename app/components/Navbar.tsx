@@ -15,7 +15,7 @@ export default function Navbar() {
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
 
   return (
-    <nav className="relative w-full bg-white px-6 py-4 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
+    <nav className="sticky top-0 z-[100] w-full bg-white px-6 py-4 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
       <div className="mx-auto w-full max-w-[1400px]">
         <motion.div
           className="flex items-center justify-between"

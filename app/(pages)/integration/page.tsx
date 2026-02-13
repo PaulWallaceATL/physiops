@@ -7,7 +7,7 @@ export default function IntegrationPage() {
         title="ANS Monitoring Integration"
         subtitle="Integrate Physio PS autonomic function testing into your practice or organization."
       />
-      <div className="mx-auto max-w-3xl px-6 py-12">
+      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
         <p>
           Contact us to learn how Physio PS technology can be integrated with
           your existing systems and workflows.
