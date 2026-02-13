@@ -39,9 +39,6 @@ export default function ConditionsAccordion({
 }: ConditionsAccordionProps) {
   if (conditions.length === 0) return null;
 
-  const firstValue = "item-0";
-  const initialValue = defaultValue ?? firstValue;
-
   if (type === "multiple") {
     return (
       <Accordion type="multiple" className="w-full">
@@ -53,7 +50,7 @@ export default function ConditionsAccordion({
   return (
     <Accordion
       type="single"
-      defaultValue={initialValue}
+      defaultValue={defaultValue}
       className="w-full"
       collapsible
     >
