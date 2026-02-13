@@ -44,7 +44,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden min-w-0`}
       >
-        <CustomCursor mixBlendMode="difference" circleColor="white" dotColor="white" />
+        <CustomCursor circleColor="#dc2626" dotColor="#dc2626" />
         <PreloaderWrapper>
           <Navbar />
           {children}

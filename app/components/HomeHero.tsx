@@ -119,12 +119,34 @@ export default function HomeHero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative w-full h-auto"
           >
-            <div className="relative w-full h-full min-h-[250px] sm:min-h-[500px] rounded-4xl bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Physio PS autonomic monitoring"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+            <div className="relative w-full h-full min-h-[250px] sm:min-h-[500px] rounded-4xl bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors overflow-hidden flex items-center justify-center p-8">
+              {/* Medical icon with gradient red */}
+              <svg
+                className="w-1/2 max-w-[280px] h-auto sm:max-w-[320px] text-red-600"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="url(#heroIconGradient)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <defs>
+                  <linearGradient
+                    id="heroIconGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" stopColor="#b91c1c" />
+                    <stop offset="50%" stopColor="#dc2626" />
+                    <stop offset="100%" stopColor="#7f1d1d" />
+                  </linearGradient>
+                </defs>
+                {/* Activity / heartbeat – autonomic monitoring */}
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
               <div className="absolute bottom-0 right-0 flex flex-col items-end">
                 <svg
                   width="40"
