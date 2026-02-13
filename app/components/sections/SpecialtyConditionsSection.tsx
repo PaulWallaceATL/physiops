@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import ConditionsAccordion from "@/app/components/ConditionsAccordion";
+import StaggeredText from "@/app/components/StaggeredText";
 import type { Condition } from "@/app/components/ConditionsAccordion";
 
 export default function SpecialtyConditionsSection({
@@ -21,9 +22,14 @@ export default function SpecialtyConditionsSection({
           transition={{ duration: 0.4 }}
           className="space-y-8"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-            Conditions we address in {specialtyTitle}
-          </h2>
+          <StaggeredText
+            as="h2"
+            text={`Conditions we address in ${specialtyTitle}`}
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <div className="rounded-xl border border-neutral-200 bg-neutral-50/50 p-4 dark:border-neutral-800 dark:bg-neutral-900/30 sm:p-6">
             <ConditionsAccordion conditions={conditions} />
           </div>

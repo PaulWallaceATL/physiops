@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import ContactForm from "@/app/components/ContactForm";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function TryItSection() {
   const { tryIt } = homepageContent;
@@ -18,9 +19,14 @@ export default function TryItSection() {
           className="space-y-8"
         >
           <div className="text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
-              {tryIt.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={tryIt.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
             <p className="mt-2 text-neutral-600 dark:text-neutral-400">
               {tryIt.description}
             </p>

@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function TestimonialsSection() {
   const { testimonials } = homepageContent;
@@ -20,9 +21,14 @@ export default function TestimonialsSection() {
           className="space-y-10"
         >
           <div className="text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-              {testimonials.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={testimonials.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.items.map((item, i) => (

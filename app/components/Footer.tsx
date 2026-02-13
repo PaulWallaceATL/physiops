@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function Footer() {
   const { footer } = homepageContent;
@@ -33,14 +34,14 @@ export default function Footer() {
         {/* Large Headline */}
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
           <motion.div variants={itemVariants} className="py-12">
-            <h2 className="text-3xl font-medium tracking-tight leading-tight text-neutral-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              {footer.headline.split(". ").map((part, i, arr) => (
-                <span key={i}>
-                  {part}{part.endsWith(".") ? "" : "."}
-                  {i < arr.length - 1 && <br />}
-                </span>
-              ))}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={footer.headline}
+              className="text-3xl font-medium tracking-tight leading-tight text-neutral-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+              segmentBy="words"
+              delay={50}
+              direction="top"
+            />
           </motion.div>
         </div>
 

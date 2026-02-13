@@ -138,11 +138,11 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
   pulseWidth = 1,
   pulseSoftness = 10,
   lineColor = "#1c1c1c",
-  lineColorLight = "#e0e0e0",
+  lineColorLight = "#64748b",
   pulseColor = "#e724eb",
-  pulseColorLight = "#e724eb",
+  pulseColorLight = "#7c3aed",
   glowColor = "#e724eb",
-  glowColorLight = "#e724eb",
+  glowColorLight = "#7c3aed",
   maxGlowIntensity = 25,
   glowDecay = 0.95,
   borderRadius = 35,
@@ -205,12 +205,18 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
     const updateDimensions = () => {
       if (containerRef.current) {
         const { width, height } = containerRef.current.getBoundingClientRect();
-        setDimensions({ width, height });
+        if (width > 0 && height > 0) {
+          setDimensions({ width, height });
+        }
       }
     };
     updateDimensions();
+    const rafId = requestAnimationFrame(() => updateDimensions());
     window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", updateDimensions);
+    };
   }, []);
 
   const onPulseArrive = useCallback(() => {

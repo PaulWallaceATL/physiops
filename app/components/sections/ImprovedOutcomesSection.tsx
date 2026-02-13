@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ImprovedOutcomesSection() {
   const { improvedOutcomes } = homepageContent;
@@ -16,9 +17,14 @@ export default function ImprovedOutcomesSection() {
           transition={{ duration: 0.4 }}
           className="space-y-8"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-            {improvedOutcomes.headline}
-          </h2>
+          <StaggeredText
+            as="h2"
+            text={improvedOutcomes.headline}
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <p className="text-lg text-neutral-700 dark:text-neutral-300">
             {improvedOutcomes.subheadline}
           </p>

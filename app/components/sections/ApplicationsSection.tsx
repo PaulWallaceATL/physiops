@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ApplicationsSection() {
   const { applications } = homepageContent;
@@ -26,9 +27,14 @@ export default function ApplicationsSection() {
           className="space-y-10"
         >
           <div className="text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-              {applications.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={applications.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {applications.items.map((item, i) => (

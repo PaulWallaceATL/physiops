@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ReportSection() {
   const { report } = homepageContent;
@@ -16,9 +17,14 @@ export default function ReportSection() {
           transition={{ duration: 0.4 }}
           className="space-y-4"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
-            {report.headline}
-          </h2>
+          <StaggeredText
+            as="h2"
+            text={report.headline}
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <p className="text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
             {report.description}
           </p>

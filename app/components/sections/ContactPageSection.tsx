@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import ContactForm from "@/app/components/ContactForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ContactPageSection() {
   const { tryIt, footer } = homepageContent;
@@ -19,9 +20,14 @@ export default function ContactPageSection() {
             transition={{ duration: 0.4 }}
             className="space-y-6"
           >
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
-              {tryIt.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={tryIt.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
             <p className="text-lg text-neutral-600 dark:text-neutral-400">
               {tryIt.description}
             </p>

@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function WorkWithUsSection() {
   const { workWithUs } = homepageContent;
@@ -22,9 +23,14 @@ export default function WorkWithUsSection() {
           <p className="text-sm font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
             {workWithUs.tagline}
           </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-            {workWithUs.headline}
-          </h2>
+          <StaggeredText
+            as="h2"
+            text={workWithUs.headline}
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <ul className="space-y-3 text-left">
             {workWithUs.items.map((item, i) => (
               <li

@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Product } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ProductBenefitsSection({ product }: { product: Product }) {
   return (
@@ -17,9 +18,14 @@ export default function ProductBenefitsSection({ product }: { product: Product }
           transition={{ duration: 0.4 }}
           className="space-y-6"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-            Benefits
-          </h2>
+          <StaggeredText
+            as="h2"
+            text="Benefits"
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <div className="grid gap-4 sm:grid-cols-2">
             {product.benefits.map((benefit, i) => (
               <motion.div

@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function SolutionsSection() {
   const { solutions } = homepageContent;
@@ -26,9 +27,14 @@ export default function SolutionsSection() {
           className="space-y-10"
         >
           <div className="text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-              {solutions.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={solutions.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
             <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
               {solutions.subheadline}
             </p>

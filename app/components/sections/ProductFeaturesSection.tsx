@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Product } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ProductFeaturesSection({ product }: { product: Product }) {
   return (
@@ -15,9 +16,14 @@ export default function ProductFeaturesSection({ product }: { product: Product }
           transition={{ duration: 0.4 }}
           className="space-y-6"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-            Features
-          </h2>
+          <StaggeredText
+            as="h2"
+            text="Features"
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <ul className="grid gap-3 sm:grid-cols-2">
             {product.features.map((feature, i) => (
               <motion.li

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Play, Heart, Stethoscope, Activity } from "lucide-react";
 import { motion } from "motion/react";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function HomeHero() {
   return (
@@ -27,14 +28,14 @@ export default function HomeHero() {
             </motion.div>
 
             {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+            <StaggeredText
+              as="h1"
+              text="Complete Autonomic Function Testing"
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight font-medium text-neutral-900 dark:text-white leading-[1.15]"
-            >
-              Complete Autonomic Function Testing
-            </motion.h1>
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
 
             {/* Sub-headline */}
             <motion.p

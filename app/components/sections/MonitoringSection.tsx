@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { useMemo } from "react";
 import { homepageContent } from "@/app/lib/data";
 import CenterFlow, { type NodeItem } from "@/app/components/CenterFlow";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function MonitoringSection() {
   const { monitoring } = homepageContent;
@@ -30,13 +31,18 @@ export default function MonitoringSection() {
           transition={{ duration: 0.4 }}
           className="space-y-6"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-            {monitoring.title}
-          </h2>
+          <StaggeredText
+            as="h2"
+            text={monitoring.title}
+            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
             {monitoring.subtitle}
           </p>
-          <div className="min-h-[520px] w-full sm:min-h-[580px] md:min-h-[640px]">
+          <div className="h-[520px] w-full sm:h-[580px] md:h-[640px]">
             <CenterFlow
               nodeItems={nodeItems}
               centerContent="PS"

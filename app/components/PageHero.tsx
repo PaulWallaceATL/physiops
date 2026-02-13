@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import StaggeredText from "@/app/components/StaggeredText";
 
 type PageHeroProps = {
   title: string;
@@ -31,13 +32,19 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
 
         {/* Bottom section - title and links */}
         <div className="flex flex-col items-start md:flex-row">
-          <h1 className="pb-[4vmax] pl-[4vmax] pr-[4vmax] text-neutral-900 dark:text-white relative text-[4vmax] sm:text-[5vmax] leading-tight font-medium">
-            {title}
-            <br />
+          <div className="pb-[4vmax] pl-[4vmax] pr-[4vmax] relative">
+            <StaggeredText
+              as="h1"
+              text={title}
+              className="text-neutral-900 dark:text-white text-[4vmax] sm:text-[5vmax] leading-tight font-medium"
+              segmentBy="words"
+              delay={50}
+              direction="top"
+            />
             <span className="text-neutral-600 dark:text-neutral-400 font-normal text-[0.5em] sm:text-[0.45em] block mt-2">
               {subtitle}
             </span>
-          </h1>
+          </div>
 
           {/* Links panel - Hero3 style */}
           <div className="bg-neutral-100 dark:bg-neutral-900 flex-1 w-full md:w-auto rounded-tl-[3vmax] md:rounded-tl-[3vmax] relative font-light text-[max(1rem,1.4vmax)] flex items-end justify-end pt-[4vmax] self-end pl-[4vmax] pr-[4vmax] pb-[4vmax]">

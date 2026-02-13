@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { homepageContent } from "@/app/lib/data";
+import StaggeredText from "@/app/components/StaggeredText";
 
 export default function ConvenienceSection() {
   const { convenience } = homepageContent;
@@ -17,9 +18,14 @@ export default function ConvenienceSection() {
           transition={{ duration: 0.4 }}
           className="space-y-4"
         >
-          <h2 className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-2xl md:text-3xl">
-            {convenience.headline}
-          </h2>
+          <StaggeredText
+            as="h2"
+            text={convenience.headline}
+            className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-2xl md:text-3xl"
+            segmentBy="words"
+            delay={60}
+            direction="top"
+          />
           <p>
             <Link
               href="/ans-monitoring-integration"

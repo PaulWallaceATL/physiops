@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import StaggeredText from "@/app/components/StaggeredText";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -44,9 +45,14 @@ export default function IntegrationPageSections({
             transition={{ duration: 0.4 }}
             className="space-y-6"
           >
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
-              {content.whyIntegrate.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={content.whyIntegrate.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
             <div className="space-y-4">
               {content.whyIntegrate.paragraphs.map((p, i) => (
                 <p
@@ -70,9 +76,14 @@ export default function IntegrationPageSections({
             transition={{ duration: 0.4 }}
             className="space-y-8"
           >
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
-              {content.whoItsFor.headline}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={content.whoItsFor.headline}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {content.whoItsFor.items.map((item, i) => (
                 <motion.div
@@ -109,9 +120,14 @@ export default function IntegrationPageSections({
             className="space-y-10"
           >
             <div className="text-center">
-              <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl">
-                {content.solutions.headline}
-              </h2>
+              <StaggeredText
+                as="h2"
+                text={content.solutions.headline}
+                className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+                segmentBy="words"
+                delay={60}
+                direction="top"
+              />
               <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
                 {content.solutions.subheadline}
               </p>
@@ -161,9 +177,14 @@ export default function IntegrationPageSections({
             transition={{ duration: 0.4 }}
             className="space-y-4"
           >
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
-              {content.providerFocus.title}
-            </h2>
+            <StaggeredText
+              as="h2"
+              text={content.providerFocus.title}
+              className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl"
+              segmentBy="words"
+              delay={60}
+              direction="top"
+            />
             <p className="text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
               {content.providerFocus.description}
             </p>
