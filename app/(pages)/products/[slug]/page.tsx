@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import HeroSection from "@/app/components/HeroSection";
+import ProductFeaturesSection from "@/app/components/sections/ProductFeaturesSection";
+import ProductBenefitsSection from "@/app/components/sections/ProductBenefitsSection";
 import { products } from "@/app/lib/data";
 
 export async function generateStaticParams() {
@@ -27,26 +29,8 @@ export default async function ProductPage({
   return (
     <div>
       <HeroSection title={product.title} subtitle={subtitle} />
-
-      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
-        <section className="mb-12">
-          <h2>Features</h2>
-          <ul>
-            {product.features.map((feature, i) => (
-              <li key={i}>{feature}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2>Benefits</h2>
-          <ul>
-            {product.benefits.map((benefit, i) => (
-              <li key={i}>{benefit}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
+      <ProductFeaturesSection product={product} />
+      <ProductBenefitsSection product={product} />
     </div>
   );
 }

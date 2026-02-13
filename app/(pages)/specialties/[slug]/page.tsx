@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import HeroSection from "@/app/components/HeroSection";
-import ConditionsAccordion from "@/app/components/ConditionsAccordion";
+import SpecialtyConditionsSection from "@/app/components/sections/SpecialtyConditionsSection";
 import { specialties } from "@/app/lib/data";
 
 export async function generateStaticParams() {
@@ -28,12 +28,10 @@ export default async function SpecialtyPage({
   return (
     <div>
       <HeroSection title={specialty.title} subtitle={subtitle} />
-
-      <div className="relative z-10 mx-auto max-w-3xl bg-white px-6 py-12 dark:bg-neutral-950">
-        <section>
-          <ConditionsAccordion conditions={specialty.conditions} />
-        </section>
-      </div>
+      <SpecialtyConditionsSection
+        conditions={specialty.conditions}
+        specialtyTitle={specialty.title}
+      />
     </div>
   );
 }
