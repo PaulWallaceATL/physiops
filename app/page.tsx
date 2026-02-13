@@ -1,65 +1,189 @@
-import Image from "next/image";
+import Link from "next/link";
+import HeroSection from "@/app/components/HeroSection";
+import { homepageContent } from "@/app/lib/data";
 
 export default function Home() {
+  const {
+    hero,
+    intro,
+    monitoring,
+    valueProposition,
+    convenience,
+    improvedOutcomes,
+    applications,
+    solutions,
+    report,
+    providerFocus,
+    patientFocus,
+    learnMoreCta,
+    workWithUs,
+    tryIt,
+    testimonials,
+    footer,
+  } = homepageContent;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div>
+      <HeroSection
+        title={hero.headline}
+        subtitle={hero.subheadline}
+      />
+
+      <div className="mx-auto max-w-3xl px-6 py-12">
+        <section className="mb-12">
+          <p>{intro.paragraph}</p>
+        </section>
+
+        <section className="mb-12">
+          <h2>{monitoring.title}</h2>
+          <p>{monitoring.subtitle}</p>
+          <div>
+            <ul>
+              {monitoring.conditionsList.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <p>{valueProposition.paragraph}</p>
+          <p>{valueProposition.supportingParagraph}</p>
+          <div>
+            <p>{valueProposition.ctaPrimary}</p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2>{convenience.headline}</h2>
+          <div>
+            <p>{convenience.ctaLink}</p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2>{improvedOutcomes.headline}</h2>
+          <p>{improvedOutcomes.subheadline}</p>
+          <div>
+            {improvedOutcomes.body.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2>{applications.headline}</h2>
+          <div>
+            {applications.items.map((item, i) => (
+              <div key={i}>
+                <h3>{item.category}</h3>
+                <p>{item.examples}</p>
+              </div>
+            ))}
+          </div>
+          <p>{applications.cta}</p>
+        </section>
+
+        <section className="mb-12">
+          <h2>{solutions.headline}</h2>
+          <h3>{solutions.subheadline}</h3>
+          <div>
+            {solutions.productCards.map((card, i) => (
+              <div key={i}>
+                <h4>{card.title}</h4>
+                <ul>
+                  {card.features.map((feature, j) => (
+                    <li key={j}>{feature}</li>
+                  ))}
+                </ul>
+                <p>{card.cta}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2>{report.headline}</h2>
+          <p>{report.description}</p>
+        </section>
+
+        <section className="mb-12">
+          <h2>{providerFocus.title}</h2>
+          <p>{providerFocus.description}</p>
+        </section>
+
+        <section className="mb-12">
+          <h2>{patientFocus.title}</h2>
+          <p>{patientFocus.description}</p>
+        </section>
+
+        <section className="mb-12">
+          <p>{learnMoreCta}</p>
+        </section>
+
+        <section className="mb-12">
+          <p>{workWithUs.tagline}</p>
+          <h2>{workWithUs.headline}</h2>
+          <div>
+            {workWithUs.items.map((item, i) => (
+              <p key={i}>{item}</p>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2>{tryIt.headline}</h2>
+          <p>{tryIt.description}</p>
+          <div>
+            <p>{tryIt.formLabels.firstName}</p>
+            <p>{tryIt.formLabels.phone}</p>
+            <p>{tryIt.formLabels.email}</p>
+            <p>{tryIt.formLabels.submit}</p>
+            <p>{tryIt.formLabels.consent}</p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2>{testimonials.headline}</h2>
+          <div>
+            {testimonials.items.map((item, i) => (
+              <div key={i}>
+                <p>{item.quote}</p>
+                <p>{item.author}</p>
+                <p>{item.credentials}</p>
+              </div>
+            ))}
+          </div>
+          <p>{testimonials.cta}</p>
+        </section>
+
+        <footer className="mt-12 border-t pt-8">
+          <div>
+            <div>
+              {footer.navigation.column1.map((link) => (
+                <Link key={`col1-${link.label}`} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div>
+              {footer.navigation.column2.map((link) => (
+                <Link key={`col2-${link.label}`} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p>{footer.contact.phone}</p>
+            <p>{footer.contact.email}</p>
+            <p>{footer.contact.address}</p>
+          </div>
+          <p>{footer.cta}</p>
+          <p>{footer.copyright}</p>
+          <p>{footer.legal}</p>
+        </footer>
+      </div>
     </div>
   );
 }
