@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useMemo } from "react";
 import { homepageContent } from "@/app/lib/data";
+import CenterFlow, { type NodeItem } from "@/app/components/CenterFlow";
 
 export default function MonitoringSection() {
   const { monitoring } = homepageContent;
+
+  const nodeItems: NodeItem[] = useMemo(
+    () =>
+      monitoring.conditionsList.map((label) => ({
+        content: (
+          <span className="whitespace-nowrap text-sm font-medium text-neutral-700 dark:text-neutral-300">
+            {label}
+          </span>
+        ),
+      })),
+    [monitoring.conditionsList],
+  );
 
   return (
     <section className="relative z-10 w-full bg-white px-4 py-16 dark:bg-neutral-950 sm:px-6 lg:px-8">
@@ -22,16 +36,19 @@ export default function MonitoringSection() {
           <p className="text-lg text-neutral-600 dark:text-neutral-400">
             {monitoring.subtitle}
           </p>
-          <ul className="flex flex-wrap gap-2">
-            {monitoring.conditionsList.map((item) => (
-              <li
-                key={item}
-                className="rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+          <div className="min-h-[520px] w-full sm:min-h-[580px] md:min-h-[640px]">
+            <CenterFlow
+              nodeItems={nodeItems}
+              centerContent="PS"
+              centerSize={80}
+              nodeSize={44}
+              variableNodeWidth
+              nodeDistance={0.72}
+              pulseDuration={4}
+              pulseInterval={8}
+              className="rounded-2xl"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
