@@ -14,7 +14,7 @@ export default function MonitoringSection() {
     () =>
       monitoring.conditionsList.map((label) => ({
         content: (
-          <span className="whitespace-nowrap text-xs sm:text-sm font-medium text-neutral-700 dark:text-neutral-300">
+          <span className="whitespace-nowrap text-xs sm:text-sm font-medium text-white">
             {label}
           </span>
         ),
@@ -23,7 +23,7 @@ export default function MonitoringSection() {
   );
 
   return (
-    <section className="relative z-10 w-full overflow-visible bg-white px-4 py-16 dark:bg-neutral-950 sm:px-6 lg:px-8">
+    <section className="relative z-10 w-full overflow-visible bg-black px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -35,16 +35,16 @@ export default function MonitoringSection() {
           <StaggeredText
             as="h2"
             text={monitoring.title}
-            className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl md:text-4xl"
+            className="text-2xl font-semibold tracking-tight text-white sm:text-3xl md:text-4xl"
             segmentBy="words"
             delay={60}
             direction="top"
           />
-          <p className="text-lg text-neutral-600 dark:text-neutral-400">
+          <p className="text-lg text-white/90">
             {monitoring.subtitle}
           </p>
           <div className="flex flex-col items-center gap-8 overflow-visible pt-10 pb-6 sm:gap-2 sm:py-12">
-            <p className="flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+            <p className="flex items-center gap-1.5 text-sm text-white/80">
               <Hand className="h-4 w-4 shrink-0" aria-hidden />
               <span>Drag</span>
             </p>
@@ -58,6 +58,10 @@ export default function MonitoringSection() {
                 nodeDistance={0.9}
                 pulseDuration={4}
                 pulseInterval={8}
+                lineColor="#ffffff"
+                lineColorLight="#ffffff"
+                nodeBgColor="#dc2626"
+                centerBgColorOverride="#dc2626"
                 className="h-full min-h-[380px]"
               />
             </div>

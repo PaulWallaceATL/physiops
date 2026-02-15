@@ -59,6 +59,10 @@ export interface CenterFlowProps {
   nodeDistance?: number;
   /** Disable glow intensification when pulses arrive */
   disableBlinking?: boolean;
+  /** Override node (chip) background color */
+  nodeBgColor?: string;
+  /** Override center node background color */
+  centerBgColorOverride?: string;
   className?: string;
 }
 
@@ -148,6 +152,8 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
   borderRadius = 35,
   nodeDistance = 0.7,
   disableBlinking = false,
+  nodeBgColor: nodeBgColorProp,
+  centerBgColorOverride,
   className,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -164,12 +170,12 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
   const activePulseColor = isLight ? pulseColorLight : pulseColor;
   const activeGlowColor = isLight ? glowColorLight : glowColor;
 
-  const nodeBgColor = isLight
+  const nodeBgColor = nodeBgColorProp ?? (isLight
     ? "rgba(255, 255, 255, 0.9)"
-    : "rgba(10, 10, 10, 0.9)";
-  const centerBgColor = isLight
+    : "rgba(10, 10, 10, 0.9)");
+  const centerBgColor = centerBgColorOverride ?? (isLight
     ? "rgba(255, 255, 255, 0.95)"
-    : "rgba(10, 10, 10, 0.95)";
+    : "rgba(10, 10, 10, 0.95)");
 
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const [pulses, setPulses] = useState<PulseState[]>([]);
@@ -585,7 +591,7 @@ const CenterFlow: React.FC<CenterFlowProps> = ({
         style={centerStyle}
       >
         <div
-          className="flex items-center justify-center font-semibold text-lg text-neutral-900 dark:text-white"
+          className={`flex items-center justify-center font-semibold text-lg ${centerBgColorOverride ? "text-white" : "text-neutral-900 dark:text-white"}`}
           style={{ width: centerSize * 0.5, height: centerSize * 0.5 }}
         >
           {centerContent !== undefined ? centerContent : defaultCenterContent}
